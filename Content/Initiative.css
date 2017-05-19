@@ -2,6 +2,10 @@
         width: 100px;
     }
 
+	.TextBox50{
+		width: 50px; 
+	}
+
     .Outline {
         border: 1px solid black;
         padding: 3px;
@@ -13,17 +17,20 @@
         background-color: green;
         color: white;
         font-weight: bold;
+        border: 5px solid black;
     }
 
     .Hurt {
         background-color: yellow;
         font-weight: bold;
+        border: 1px solid black;
     }
 
     .Dead {
         background-color: red;
         color: white;
         font-weight: bold;
+        border: 1px solid black;
     }
 
     .Player {
@@ -37,10 +44,7 @@
     }
     
 .gridCellNoBackground{
-	
 	text-align: center;
-	width: 100%;
-	background-color: white;
-	        color: black;
-        font-weight: bold;
+	vertical-align: middle;
+	/*background-color: white !important;*/		
 }
