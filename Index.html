@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html data-ng-app="cipsApp">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Initiative Tracker</title>
+		<link href="Content/bootstrap.css" rel="stylesheet">
+		<link href="Content/site.css" rel="stylesheet">
+		<link href="Content/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet">
+		<link href="Content/Initiative.css" rel="stylesheet" />
+		<link href="Content/ng-grid.css" rel="stylesheet" />
+	</head>
+	<body>
+
+		<div>
+			<div data-ng-controller="InitiativeController">
+				<div class="Outline">
+					<label>Players</label>
+					<table>
+						<tr>
+							<td>Player</td>
+							<td>Initiative</td>
+						</tr>
+						<tr>
+							<td>
+							<input type="text" name="Player1" data-ng-model="Player1"/>
+							</td>
+							<td>
+							<input type="text" name="Player1Initiative" data-ng-model="Player1Initiative"/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+							<input type="text" name="Player2" data-ng-model="Player2" />
+							</td>
+							<td>
+							<input type="text" name="Player2Initiative" data-ng-model="Player2Initiative" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+							<input type="text" name="Player1" data-ng-model="Player3" />
+							</td>
+							<td>
+							<input type="text" name="Player1Initiative" data-ng-model="Player3Initiative" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+							<input type="text" name="Player1" data-ng-model="Player4" />
+							</td>
+							<td>
+							<input type="text" name="Player1Initiative" data-ng-model="Player4Initiative" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+							<input type="text" name="Player1" data-ng-model="Player5" />
+							</td>
+							<td>
+							<input type="text" name="Player1Initiative" data-ng-model="Player5Initiative" />
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="Outline">
+					<label>Monsters</label>
+					<div>
+						<div style="display: inline;">
+							Name:
+							<input type="text" data-ng-model="MonsterName" name="MonsterName"/>
+						</div>
+						<div style="display: inline;">
+							Init Bonus:
+							<input type="text" data-ng-model="MonsterBonus" name="MonsterBonus" class="MonsterInput" />
+						</div>
+					</div>
+					<div>
+						<div style="display: inline;">
+							Count:
+							<input type="text" data-ng-model="MonsterCount" name="MonsterCount" class="MonsterInput" />
+						</div>
+						<div style="display: inline;">
+							Max HP:
+							<input type="text" data-ng-model="MonsterMaxHP" class="MonsterInput" />
+						</div>
+						<div style="display: inline;">
+							AC:
+							<input type="text" data-ng-model="MonsterAC" class="MonsterInput" />
+						</div>
+					</div>
+
+					<div>
+						<input type="button" data-ng-click="AddMonsters()" value="Add" />
+						<input type="button" data-ng-click="ClearMonsters()" value="Clear" />
+					</div>
+
+					<div data-ng-grid="MonstersGrid" style="width: 595px; min-height: 500px;"></div>
+				</div>
+				<div class="Outline">
+					<label>Initiative</label>
+					<div>
+						<input type="button" data-ng-click="Roll()" value="Roll Initiative"/>
+						<input type="button" data-ng-click="ClearInitiative()" value="Clear Initiative"/>
+					</div>
+					<div>
+						<input type="button" data-ng-click="ProgressInitiative()" value="Next"/>
+					</div>
+					<div data-ng-grid="InitiativeGrid" style="width: 920px; min-height: 750px;"></div>
+
+				</div>
+			</div>
+
+		</div>
+		<script src="Scripts/modernizr-2.6.2.js"></script>
+		<script src="Scripts/jquery-1.10.2.js"></script>
+		<script src="Scripts/bootstrap.js"></script>
+		<script src="Scripts/respond.js"></script>
+		<script src="Scripts/angular-1.2.14/angular.js"></script>
+		<script src="Scripts/angular-1.2.14/angular-sanitize.js"></script>
+		<script src="Scripts/angular-1.2.14/angular-resource.js"></script>
+		<script src="Scripts/angular-ui-bootstrap/ui-bootstrap-0.6.0.js"></script>
+		<script src="Scripts/angular-ui-bootstrap/ui-bootstrap-tpls-0.6.0.js"></script>
+		<script src="Scripts/angular-ng-grid/ng-grid-2.0.7.debug.js"></script>
+		<script src="Scripts/Controllers/app.js"></script>
+		<script src="Scripts/moment.js"></script>
+		<script src="Scripts/jquery.linq/linq.js"></script>
+		<script src="Scripts/jquery.linq/jquery.linq.js"></script>
+		<script src="Scripts/Controllers/InitiativeTrackerController.js"></script>
+	</body>
+</html>

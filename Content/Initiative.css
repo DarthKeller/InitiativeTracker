@@ -1,0 +1,46 @@
+﻿    .MonsterInput {
+        width: 100px;
+    }
+
+    .Outline {
+        border: 1px solid black;
+        padding: 3px;
+        margin-left: 10px;
+        float: left;
+    }
+
+    .Full {
+        background-color: green;
+        color: white;
+        font-weight: bold;
+    }
+
+    .Hurt {
+        background-color: yellow;
+        font-weight: bold;
+    }
+
+    .Dead {
+        background-color: red;
+        color: white;
+        font-weight: bold;
+    }
+
+    .Player {
+        background-color: white;
+        color: black;
+        font-weight: bold;
+    }
+
+    .gridCellBorder {
+        border: 1px solid black;
+    }
+    
+.gridCellNoBackground{
+	
+	text-align: center;
+	width: 100%;
+	background-color: white;
+	        color: black;
+        font-weight: bold;
+}
