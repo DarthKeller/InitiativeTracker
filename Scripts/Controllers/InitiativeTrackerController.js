@@ -40,28 +40,28 @@ cipsApp.controller("InitiativeController",
         };
 
         var faCellTemplate = '<input  type="text" ng-input="COL_FIELD" ng-model="COL_FIELD"  data-ng-blur="Damage(row.entity)" style="width: 100px;" />';
-		var turnTemplate = '<i class="fa fa-arrow-right gridCellNoBackground" data-ng-show="COL_FIELD==true"></i>';
+		var turnTemplate = '<i class="fa fa-arrow-right" data-ng-show="COL_FIELD==true"></i>';
 
         $scope.InitiativeGrid = {
             data: 'initiative',
             enableCellEditOnFocus: true,
             multiSelect: false,
             enableRowSelection: false,
-
+rowHeight: 23,
             columnDefs: [
-            	{field: 'IsTurn', displayName: '', cellClass: 'gridCellNoBackground', cellTemplate: turnTemplate, width: '50px'},
-                { field: 'Name' },
-                { field: 'Initiative' },
-                { field: 'AC' },
-                { field: 'MaxHP', displayName: 'Max HP' },
-                { field: 'CurrentHP', displayName: 'Current HP' },
+            	{field: 'IsTurn', displayName: '', cellClass: 'gridCellNoBackground', cellTemplate: turnTemplate, width: '20px', enableCellEdit: false},
+                { field: 'Name', enableCellEdit: false },
+                { field: 'Initiative', enableCellEdit: false },
+                { field: 'AC', enableCellEdit: false },
+                { field: 'MaxHP', displayName: 'Max HP', enableCellEdit: false },
+                { field: 'CurrentHP', displayName: 'Current HP', enableCellEdit: false },
                 { field: 'Damage', enableCellEdit: true, editableCellTemplate: faCellTemplate},
                 //{ field: 'Damage', displayName: ''}
             ]
         };
 
         $scope.InitiativeGrid.rowTemplate =
-            '<div style="height: 100%" ng-class="{Dead: row.getProperty(\'CurrentHP\')<=\'0\', Full: row.getProperty(\'CurrentHP\') == row.getProperty(\'MaxHP\'), Hurt: row.getProperty(\'CurrentHP\')<row.getProperty(\'MaxHP\'), Player:  !row.getProperty(\'CurrentHP\')}">' +
+            '<div style="height: 100%; " ng-class="{Dead: row.getProperty(\'CurrentHP\')<=\'0\', Full: row.getProperty(\'CurrentHP\') == row.getProperty(\'MaxHP\'), Hurt: row.getProperty(\'CurrentHP\')<row.getProperty(\'MaxHP\'), Player:  !row.getProperty(\'CurrentHP\')}">' +
             '<div ng-repeat="col in renderedColumns" ng-class="col.colIndex()" class="ngCell ">' +
             '<div ng-cell></div>' +
             '</div>' +
@@ -83,6 +83,10 @@ cipsApp.controller("InitiativeController",
 		};
 
         $scope.Damage = function(monster) {
+        	if(!monster.Damage){
+        		return;
+        	}
+        	
             monster.CurrentHP = Number(monster.CurrentHP) - Number(monster.Damage);
             monster.Damage = '';
         };
@@ -112,6 +116,11 @@ cipsApp.controller("InitiativeController",
 
         $scope.ClearMonsters = function() {
             $scope.Monsters = [];
+
+        };
+
+        $scope.ClearInitiative = function() {
+            $scope.Monsters = [];
             $scope.initiative = [];
 
             $scope.Player1Initiative = '';
@@ -123,10 +132,6 @@ cipsApp.controller("InitiativeController",
             $scope.Player4Initiative = '';
 
             $scope.Player5Initiative = '';
-        };
-
-        $scope.ClearInitiative = function() {
-            $scope.initiative = [];
         };
 
         $scope.Roll = function () {
