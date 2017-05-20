@@ -1,4 +1,4 @@
-﻿var cipsApp = angular.module('cipsApp', [
+﻿var itApp = angular.module('itApp', [
     'ui.bootstrap',
     'ngGrid',
     'ngResource'

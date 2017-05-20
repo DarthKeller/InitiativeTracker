@@ -1,6 +1,6 @@
 ﻿//Initiative
 
-cipsApp.controller("InitiativeController",
+itApp.controller("InitiativeController",
     function InitiativeController($scope) {
 
         // Variables
@@ -27,6 +27,20 @@ cipsApp.controller("InitiativeController",
         $scope.Player5 = '';
         $scope.Player5Initiative = '';
 
+        $scope.Player6 = '';
+        $scope.Player6Initiative = '';
+        
+		$scope.Player7 = '';
+        $scope.Player7Initiative = '';
+        
+        $scope.Player8 = '';
+        $scope.Player8Initiative = '';
+        
+        $scope.Player9 = '';
+        $scope.Player9Initiative = '';
+        
+        $scope.Player10 = '';
+        $scope.Player10Initiative = '';
 
         //Grids
         $scope.MonstersGrid = {
@@ -132,6 +146,11 @@ rowHeight: 23,
             $scope.Player4Initiative = '';
 
             $scope.Player5Initiative = '';
+            $scope.Player6Initiative = '';
+            $scope.Player7Initiative = '';
+            $scope.Player8Initiative = '';
+            $scope.Player9Initiative = '';
+            $scope.Player10Initiative = '';
         };
 
         $scope.Roll = function () {
@@ -196,7 +215,46 @@ rowHeight: 23,
                 player5.IsTurn = false;
                 $scope.initiative.push(player5);
             }
+            
+            if ($scope.Player6) {
+                var player6 = {};
+                player6.Name = $scope.Player6;
+                player6.Initiative = Number($scope.Player6Initiative);
+                player6.IsTurn = false;
+                $scope.initiative.push(player6);
+            }
+            
+			if ($scope.Player7) {
+                var player7 = {};
+                player7.Name = $scope.Player7;
+                player7.Initiative = Number($scope.Player7Initiative);
+                player7.IsTurn = false;
+                $scope.initiative.push(player7);
+            }
 
+			if ($scope.Player8) {
+                var player8 = {};
+                player8.Name = $scope.Player8;
+                player8.Initiative = Number($scope.Player8Initiative);
+                player8.IsTurn = false;
+                $scope.initiative.push(player8);
+            }
+            
+			if ($scope.Player9) {
+                var player9 = {};
+                player9.Name = $scope.Player9;
+                player9.Initiative = Number($scope.Player9Initiative);
+                player9.IsTurn = false;
+                $scope.initiative.push(player9);
+            }
+            
+			if ($scope.Player10) {
+                var player10 = {};
+                player10.Name = $scope.Player10;
+                player10.Initiative = Number($scope.Player10Initiative);
+                player10.IsTurn = false;
+                $scope.initiative.push(player10);
+            }
 
             var sortedInitiative = Enumerable.From($scope.initiative).OrderByDescending(function (i) { return i.Initiative; })
                 .Select(function (s) { return s; }).ToArray();
