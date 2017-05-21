@@ -61,6 +61,7 @@ itApp.controller("InitiativeController",
             enableCellEditOnFocus: true,
             multiSelect: false,
             enableRowSelection: false,
+            enableSorting: false,
 rowHeight: 23,
             columnDefs: [
             	{field: 'IsTurn', displayName: '', cellClass: 'gridCellNoBackground', cellTemplate: turnTemplate, width: '20px', enableCellEdit: false},
