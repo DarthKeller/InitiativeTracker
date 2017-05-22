@@ -11,6 +11,7 @@ itApp.controller("InitiativeController",
         $scope.MonsterCount = '';
         $scope.MonsterAC = '';
         $scope.MonsterMaxHP = '';
+        $scope.SelectedItem = {};
 
         $scope.Player1 = '';
         $scope.Player1Initiative = '';
@@ -55,14 +56,15 @@ itApp.controller("InitiativeController",
 
         var faCellTemplate = '<input  type="text" ng-input="COL_FIELD" ng-model="COL_FIELD"  data-ng-blur="Damage(row.entity)" style="width: 100px;" />';
 		var turnTemplate = '<i class="fa fa-arrow-right" data-ng-show="COL_FIELD==true"></i>';
+		var removeTemplate = '<i class="fa fa-trash" data-ng-show="COL_FIELD!=true" style="cursor:pointer;" data-ng-click="RemoveInitiative(row.entity)"></i>';
 
         $scope.InitiativeGrid = {
             data: 'initiative',
             enableCellEditOnFocus: true,
             multiSelect: false,
-            enableRowSelection: false,
+            enableRowSelection: true,
             enableSorting: false,
-rowHeight: 23,
+			rowHeight: 23,
             columnDefs: [
             	{field: 'IsTurn', displayName: '', cellClass: 'gridCellNoBackground', cellTemplate: turnTemplate, width: '20px', enableCellEdit: false},
                 { field: 'Name', enableCellEdit: false },
@@ -71,7 +73,7 @@ rowHeight: 23,
                 { field: 'MaxHP', displayName: 'Max HP', enableCellEdit: false },
                 { field: 'CurrentHP', displayName: 'Current HP', enableCellEdit: false },
                 { field: 'Damage', enableCellEdit: true, editableCellTemplate: faCellTemplate},
-                //{ field: 'Damage', displayName: ''}
+                { field: 'IsTurn', displayName: '', cellTemplate: removeTemplate, enableCellEdit: false}
             ]
         };
 
@@ -265,5 +267,37 @@ rowHeight: 23,
 
             $scope.initiative = sortedInitiative;
         };
+    
+		$scope.RemoveInitiative = function(entity){
+			var index = $scope.initiative.indexOf(entity);
+			
+			if(index > -1){
+				$scope.initiative.splice(index,1);
+			}
+		};
+		
+		$scope.BuildDefault = function(){
+                var x = {};
+                x.Name = 'Test 1';
+                x.Initiative = 17;
+                x.AC = 10;
+                x.MaxHP = 10;
+                x.CurrentHP = 10;
+				x.IsTurn = true;
+
+                $scope.initiative.push(x);
+                
+                var y = {};
+                y.Name = 'Test 2';
+                y.Initiative = 17;
+                y.AC = 10;
+                y.MaxHP = 10;
+                y.CurrentHP = 10;
+				y.IsTurn = false;
+
+                $scope.initiative.push(y);
+		};
+		
+		//$scope.BuildDefault();    
     });
 
