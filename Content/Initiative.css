@@ -48,3 +48,22 @@
 	vertical-align: middle;
 	/*background-color: white !important;*/		
 }
+
+.PlayerBox{
+    height: 300px !important;    
+}
+
+.TopAlign{
+	vertical-align: top !important;
+}
+
+.FirstRow{
+	height: 350px;
+}
+
+.StatBlock{
+	position: absolute;
+	top: 360px;
+	width: 865px;
+	height: 550px;
+}

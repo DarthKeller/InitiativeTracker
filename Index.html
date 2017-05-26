@@ -12,9 +12,9 @@
 	</head>
 	<body>
 
-		<div>
+
 			<div data-ng-controller="InitiativeController">
-				<div class="Outline">
+				<div class="Outline Playerbox" >
 					<label>Players</label>
 					<table>
 						<tr>
@@ -108,7 +108,7 @@
 						</tr>						
 					</table>
 				</div>
-				<div class="Outline">
+				<div class="Outline Playerbox">
 					<label>Monsters</label>
 					<div>
 						Select: <select data-ng-options="monster as monster.name for monster in monsterData" data-ng-model="selectedMonster" data-ng-change="SelectMonster()"></select>
@@ -141,9 +141,9 @@
 						<input type="button" data-ng-click="ClearMonsters()" value="Clear" />
 					</div>
 
-					<div data-ng-grid="MonstersGrid" style="width: 595px; min-height: 500px;"></div>
+					<div data-ng-grid="MonstersGrid" style="width: 595px; height: 200px;"></div>
 				</div>
-				<div class="Outline">
+				<div class="Outline" style="height: 860px;">
 					<label>Initiative</label>
 					<div>
 						<input type="button" data-ng-click="Roll()" value="Roll Initiative"/>
@@ -155,9 +155,12 @@
 					<div data-ng-grid="InitiativeGrid" style="width: 920px; min-height: 750px;"></div>
 
 				</div>
+				<div class="Outline StatBlock">
+					<label>Stat Block</label>
+				</div>
 			</div>
 
-		</div>
+
 		<script src="Scripts/modernizr-2.6.2.js"></script>
 		<script src="Scripts/jquery-1.10.2.js"></script>
 		<script src="Scripts/bootstrap.js"></script>

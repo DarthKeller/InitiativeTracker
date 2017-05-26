@@ -73,13 +73,13 @@ itApp.controller("InitiativeController",
 			rowHeight: 23,
             columnDefs: [
             	{field: 'IsTurn', displayName: '', cellClass: 'gridCellNoBackground', cellTemplate: turnTemplate, width: '20px', enableCellEdit: false},
-                { field: 'Name', enableCellEdit: false },
-                { field: 'Initiative', enableCellEdit: false },
-                { field: 'AC', enableCellEdit: false },
-                { field: 'MaxHP', displayName: 'Max HP', enableCellEdit: false },
-                { field: 'CurrentHP', displayName: 'Current HP', enableCellEdit: false },
-                { field: 'Damage', enableCellEdit: true, editableCellTemplate: faCellTemplate},
-                { field: 'IsTurn', displayName: '', cellTemplate: removeTemplate, enableCellEdit: false}
+                { field: 'Name', enableCellEdit: false, width: '***' },
+                { field: 'Initiative', enableCellEdit: false, width: '**' },
+                { field: 'AC', enableCellEdit: false, width: '*' },
+                { field: 'MaxHP', displayName: 'Max HP', enableCellEdit: false, width: '*' },
+                { field: 'CurrentHP', displayName: 'Current HP', enableCellEdit: false, width: '*' },
+                { field: 'Damage', enableCellEdit: true, editableCellTemplate: faCellTemplate, width: '*'},
+                { field: 'IsTurn', displayName: '', cellTemplate: removeTemplate, enableCellEdit: false, width: '*'}
             ]
         };
 
