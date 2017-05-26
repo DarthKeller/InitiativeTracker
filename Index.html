@@ -4,162 +4,258 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Initiative Tracker</title>
+		<link href='https://fonts.googleapis.com/css?family=Viga' rel='stylesheet'>
 		<link href="Content/bootstrap.css" rel="stylesheet">
 		<link href="Content/site.css" rel="stylesheet">
 		<link href="Content/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet">
 		<link href="Content/Initiative.css" rel="stylesheet" />
+		<link href="Content/MonsterStatBlock.css" rel="stylesheet" />
 		<link href="Content/ng-grid.css" rel="stylesheet" />
 	</head>
 	<body>
 
+		<div data-ng-controller="InitiativeController">
+			<div class="Outline Playerbox" >
+				<label>Players</label>
+				<table>
+					<tr>
+						<td>Player</td>
+						<td>Initiative</td>
+					</tr>
+					<tr>
+						<td>
+						<input type="text" name="Player1" data-ng-model="Player1"/>
+						</td>
+						<td>
+						<input type="text" name="Player1Initiative" data-ng-model="Player1Initiative" class="TextBox50"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<input type="text" name="Player2" data-ng-model="Player2" />
+						</td>
+						<td>
+						<input type="text" name="Player2Initiative" data-ng-model="Player2Initiative" class="TextBox50"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<input type="text" name="Player1" data-ng-model="Player3" />
+						</td>
+						<td>
+						<input type="text" name="Player1Initiative" data-ng-model="Player3Initiative" class="TextBox50"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<input type="text" name="Player1" data-ng-model="Player4" />
+						</td>
+						<td>
+						<input type="text" name="Player1Initiative" data-ng-model="Player4Initiative" class="TextBox50"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<input type="text" name="Player1" data-ng-model="Player5" />
+						</td>
+						<td>
+						<input type="text" name="Player1Initiative" data-ng-model="Player5Initiative" class="TextBox50"/>
+						</td>
+					</tr>
 
-			<div data-ng-controller="InitiativeController">
-				<div class="Outline Playerbox" >
-					<label>Players</label>
-					<table>
-						<tr>
-							<td>Player</td>
-							<td>Initiative</td>
-						</tr>
-						<tr>
-							<td>
-							<input type="text" name="Player1" data-ng-model="Player1"/>
-							</td>
-							<td>
-							<input type="text" name="Player1Initiative" data-ng-model="Player1Initiative" class="TextBox50"/>
-							</td>
-						</tr>
-						<tr>
-							<td>
-							<input type="text" name="Player2" data-ng-model="Player2" />
-							</td>
-							<td>
-							<input type="text" name="Player2Initiative" data-ng-model="Player2Initiative" class="TextBox50"/>
-							</td>
-						</tr>
-						<tr>
-							<td>
-							<input type="text" name="Player1" data-ng-model="Player3" />
-							</td>
-							<td>
-							<input type="text" name="Player1Initiative" data-ng-model="Player3Initiative" class="TextBox50"/>
-							</td>
-						</tr>
-						<tr>
-							<td>
-							<input type="text" name="Player1" data-ng-model="Player4" />
-							</td>
-							<td>
-							<input type="text" name="Player1Initiative" data-ng-model="Player4Initiative" class="TextBox50"/>
-							</td>
-						</tr>
-						<tr>
-							<td>
-							<input type="text" name="Player1" data-ng-model="Player5" />
-							</td>
-							<td>
-							<input type="text" name="Player1Initiative" data-ng-model="Player5Initiative" class="TextBox50"/>
-							</td>
-						</tr>
-						
-						<tr>
-							<td>
-							<input type="text" name="Player1" data-ng-model="Player6" />
-							</td>
-							<td>
-							<input type="text" name="Player1Initiative" data-ng-model="Player6Initiative" class="TextBox50"/>
-							</td>
-						</tr>
-						
-						<tr>
-							<td>
-							<input type="text" name="Player1" data-ng-model="Player7" />
-							</td>
-							<td>
-							<input type="text" name="Player1Initiative" data-ng-model="Player7Initiative" class="TextBox50"/>
-							</td>
-						</tr>
-						
-						<tr>
-							<td>
-							<input type="text" name="Player1" data-ng-model="Player8" />
-							</td>
-							<td>
-							<input type="text" name="Player1Initiative" data-ng-model="Player8Initiative" class="TextBox50"/>
-							</td>
-						</tr>
-						
-						<tr>
-							<td>
-							<input type="text" name="Player1" data-ng-model="Player9" />
-							</td>
-							<td>
-							<input type="text" name="Player1Initiative" data-ng-model="Player9Initiative" class="TextBox50"/>
-							</td>
-						</tr>
-						
-						<tr>
-							<td>
-							<input type="text" name="Player1" data-ng-model="Player10" />
-							</td>
-							<td>
-							<input type="text" name="Player1Initiative" data-ng-model="Player10Initiative" class="TextBox50"/>
-							</td>
-						</tr>						
-					</table>
-				</div>
-				<div class="Outline Playerbox">
-					<label>Monsters</label>
-					<div>
-						Select: <select data-ng-options="monster as monster.name for monster in monsterData" data-ng-model="selectedMonster" data-ng-change="SelectMonster()"></select>
-					</div>
-					<div>
-						<div style="display: inline;">
-							Name:
-							<input type="text" data-ng-model="MonsterName" name="MonsterName"/>
-						</div>
-						<div style="display: inline;">
-							Init Bonus:
-							<input type="text" data-ng-model="MonsterBonus" name="MonsterBonus" class="TextBox50" />
-						</div>
-						<div style="display: inline;">
-							Count:
-							<input type="text" data-ng-model="MonsterCount" name="MonsterCount" class="TextBox50" />
-						</div>
-						<div style="display: inline;">
-							Max HP:
-							<input type="text" data-ng-model="MonsterMaxHP" class="TextBox50" />
-						</div>
-						<div style="display: inline;">
-							AC:
-							<input type="text" data-ng-model="MonsterAC" class="TextBox50" />
-						</div>
-					</div>
+					<tr>
+						<td>
+						<input type="text" name="Player1" data-ng-model="Player6" />
+						</td>
+						<td>
+						<input type="text" name="Player1Initiative" data-ng-model="Player6Initiative" class="TextBox50"/>
+						</td>
+					</tr>
 
-					<div>
-						<input type="button" data-ng-click="AddMonsters()" value="Add" />
-						<input type="button" data-ng-click="ClearMonsters()" value="Clear" />
-					</div>
+					<tr>
+						<td>
+						<input type="text" name="Player1" data-ng-model="Player7" />
+						</td>
+						<td>
+						<input type="text" name="Player1Initiative" data-ng-model="Player7Initiative" class="TextBox50"/>
+						</td>
+					</tr>
 
-					<div data-ng-grid="MonstersGrid" style="width: 595px; height: 200px;"></div>
-				</div>
-				<div class="Outline" style="height: 860px;">
-					<label>Initiative</label>
-					<div>
-						<input type="button" data-ng-click="Roll()" value="Roll Initiative"/>
-						<input type="button" data-ng-click="ClearInitiative()" value="Clear Initiative"/>
-					</div>
-					<div>
-						<input type="button" data-ng-click="ProgressInitiative()" value="Next"/>
-					</div>
-					<div data-ng-grid="InitiativeGrid" style="width: 920px; min-height: 750px;"></div>
+					<tr>
+						<td>
+						<input type="text" name="Player1" data-ng-model="Player8" />
+						</td>
+						<td>
+						<input type="text" name="Player1Initiative" data-ng-model="Player8Initiative" class="TextBox50"/>
+						</td>
+					</tr>
 
+					<tr>
+						<td>
+						<input type="text" name="Player1" data-ng-model="Player9" />
+						</td>
+						<td>
+						<input type="text" name="Player1Initiative" data-ng-model="Player9Initiative" class="TextBox50"/>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+						<input type="text" name="Player1" data-ng-model="Player10" />
+						</td>
+						<td>
+						<input type="text" name="Player1Initiative" data-ng-model="Player10Initiative" class="TextBox50"/>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="Outline Playerbox">
+				<label>Monsters</label>
+				<div>
+					Select: <select data-ng-options="monster as monster.name for monster in monsterData" data-ng-model="selectedMonster" data-ng-change="SelectMonster()"></select>
 				</div>
-				<div class="Outline StatBlock">
-					<label>Stat Block</label>
+				<div>
+					<div style="display: inline;">
+						Name:
+						<input type="text" data-ng-model="MonsterName" name="MonsterName"/>
+					</div>
+					<div style="display: inline;">
+						Init Bonus:
+						<input type="text" data-ng-model="MonsterBonus" name="MonsterBonus" class="TextBox50" />
+					</div>
+					<div style="display: inline;">
+						Count:
+						<input type="text" data-ng-model="MonsterCount" name="MonsterCount" class="TextBox50" />
+					</div>
+					<div style="display: inline;">
+						Max HP:
+						<input type="text" data-ng-model="MonsterMaxHP" class="TextBox50" />
+					</div>
+					<div style="display: inline;">
+						AC:
+						<input type="text" data-ng-model="MonsterAC" class="TextBox50" />
+					</div>
 				</div>
+
+				<div>
+					<input type="button" data-ng-click="AddMonsters()" value="Add" />
+					<input type="button" data-ng-click="ClearMonsters()" value="Clear" />
+				</div>
+
+				<div data-ng-grid="MonstersGrid" style="width: 595px; height: 200px;"></div>
+			</div>
+			<div class="Outline" style="height: 860px;">
+				<label>Initiative</label>
+				<div>
+					<input type="button" data-ng-click="Roll()" value="Roll Initiative"/>
+					<input type="button" data-ng-click="ClearInitiative()" value="Clear Initiative"/>
+				</div>
+				<div>
+					<input type="button" data-ng-click="ProgressInitiative()" value="Next"/>
+					<span>Round Counter: {{roundCount}}</span>
+				</div>
+				<div data-ng-grid="InitiativeGrid" style="width: 920px; min-height: 750px;"></div>
+
 			</div>
 
+			<div class="Outline StatBlock" data-ng-show="ActiveMonster.hit_points">
+				<div style="float: left; width: 48%; margin-right: 5px;">
+					<div class="MonsterName">
+						{{ActiveMonster.name}}
+					</div>
+					<div class="MonsterType">
+						{{ActiveMonster.size}} {{ActiveMonster.type}}, {{ActiveMonster.alignment}}
+					</div>
+					<hr />
+					<div>
+						<label>Armor Class</label> {{ActiveMonster.armor_class}}
+					</div>
+					<div>
+						<label>HP</label> {{ActiveMonster.hit_points}} ({{ActiveMonster.hit_dice}})
+					</div>
+					<div>
+						<label>Speed</label> {{ActiveMonster.speed}}
+					</div>
+					<hr />
+					<div>
+						<table>
+							<tr>
+								<td><label>STR</label></td>
+								<td><label>DEX</label></td>
+								<td><label>CON</label></td>
+								<td><label>INT</label></td>
+								<td><label>WIS</label></td>
+								<td><label>CHA</label></td>
+							</tr>
+							<tr>
+								<td>{{ActiveMonster.strength}}</td>
+								<td>{{ActiveMonster.dexterity}}</td>
+								<td>{{ActiveMonster.constitution}}</td>
+								<td>{{ActiveMonster.intelligence}}</td>
+								<td>{{ActiveMonster.wisdom}}</td>
+								<td>{{ActiveMonster.charisma}}</td>
+							</tr>
+						</table>
+					</div>
+					<hr />
+					<div data-ng-show="ActiveMonster.Saves">
+						<label>Saving Throws</label>
+						{{ActiveMonster.Saves}}
+					</div>
+					<div data-ng-show="ActiveMonster.Skills">
+						<label>Skills</label>
+						{{ActiveMonster.Skills}}
+					</div>
+					<div data-ng-show="ActiveMonster.damage_immunities">
+						<label>Damage Immunities</label>
+						{{ActiveMonster.damage_immunities}}
+					</div>
+					<div data-ng-show="ActiveMonster.damage_resistances">
+						<label>Damage Resistances</label>
+						{{ActiveMonster.damage_resistances}}
+					</div>
+					<div data-ng-show="ActiveMonster.damage_vulnerabilities">
+						<label>Damage Vulnerabilities</label>
+						{{ActiveMonster.damage_vulnerabilities}}
+					</div>					
+					<div data-ng-show="ActiveMonster.condition_immunities">
+						<label>Condition Immunities</label>
+						{{ActiveMonster.condition_immunities}}
+					</div>
+					<div>
+						<label>Senses</label> {{ActiveMonster.senses}}
+					</div>
+					<div>
+						<label>Languages</label> {{ActiveMonster.languages}}
+					</div>
+					<div>
+						<label>Challenge</label>
+						{{ActiveMonster.challenge_rating}}
+					</div>
+					<hr>
+					<div data-ng-repeat="a in ActiveMonster.special_abilities">
+						<p><strong>{{a.name}}:</strong> {{a.desc}}</p>
+					</div>
+				</div>
+				<div style="float: right; width: 48%;">
+					<div class="MonsterName">Actions</div>
+
+					<hr>
+					<div data-ng-repeat="action in ActiveMonster.actions">
+						<p><strong>{{action.name}}</strong> {{action.desc}}</p>
+						
+					</div>
+					<div data-ng-show="ActiveMonster.legendary_actions.length>0">
+					<div class="MonsterName">Legendary Actions</div>
+					<hr>
+					<div data-ng-repeat="action in ActiveMonster.legendary_actions">
+						<p><strong>{{action.name}}</strong> {{action.desc}}</p>
+					</div>						
+					</div>
+
+				</div>				
+			</div>
+		</div>
 
 		<script src="Scripts/modernizr-2.6.2.js"></script>
 		<script src="Scripts/jquery-1.10.2.js"></script>
