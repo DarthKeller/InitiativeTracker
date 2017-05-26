@@ -111,6 +111,9 @@
 				<div class="Outline">
 					<label>Monsters</label>
 					<div>
+						Select: <select data-ng-options="monster as monster.name for monster in monsterData" data-ng-model="selectedMonster" data-ng-change="SelectMonster()"></select>
+					</div>
+					<div>
 						<div style="display: inline;">
 							Name:
 							<input type="text" data-ng-model="MonsterName" name="MonsterName"/>

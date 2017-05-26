@@ -1,9 +1,15 @@
 ﻿//Initiative
 
 itApp.controller("InitiativeController",
-    function InitiativeController($scope) {
+    function InitiativeController($scope, $http) {
+
+
+
 
         // Variables
+        $scope.monsterData = [];
+        $scope.selectedMonster = {};
+        
         $scope.Monsters = [];
         $scope.initiative = [];
         $scope.MonsterName = '';
@@ -129,6 +135,7 @@ itApp.controller("InitiativeController",
             $scope.MonsterCount = '';
             $scope.MonsterAC = '';
             $scope.MonsterMaxHP = '';
+            $scope.selectedMonster = $scope.monsterData[0];
         };
 
         $scope.ClearMonsters = function() {
@@ -274,6 +281,22 @@ itApp.controller("InitiativeController",
 			if(index > -1){
 				$scope.initiative.splice(index,1);
 			}
+		};
+		
+		$http.get('Data/monsters.json').success(function(response){
+			$scope.monsterData =response;
+			$scope.monsterData.unshift({name: 'Select'})
+			$scope.selectedMonster = $scope.monsterData[0];
+		});
+		
+		$scope.SelectMonster = function(){
+			//alert($scope.selectedMonster.name);
+			var dexterity = Number($scope.selectedMonster.dexterity);
+			var dexBonus = Math.floor((dexterity-10)/2);
+			$scope.MonsterName = $scope.selectedMonster.name;
+			$scope.MonsterBonus = dexBonus;
+			$scope.MonsterMaxHP = $scope.selectedMonster.hit_points;
+			$scope.MonsterAC = $scope.selectedMonster.armor_class;
 		};
 		
 		$scope.BuildDefault = function(){
