@@ -5,6 +5,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Initiative Tracker</title>
 		<link href='https://fonts.googleapis.com/css?family=Viga' rel='stylesheet'>
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Tienne" rel="stylesheet">
 		<link href="Content/bootstrap.css" rel="stylesheet">
 		<link href="Content/site.css" rel="stylesheet">
 		<link href="Content/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet">
@@ -188,12 +190,12 @@
 								<td><label>CHA</label></td>
 							</tr>
 							<tr>
-								<td>{{ActiveMonster.strength}}</td>
-								<td>{{ActiveMonster.dexterity}}</td>
-								<td>{{ActiveMonster.constitution}}</td>
-								<td>{{ActiveMonster.intelligence}}</td>
-								<td>{{ActiveMonster.wisdom}}</td>
-								<td>{{ActiveMonster.charisma}}</td>
+								<td>{{ActiveMonster.strength}} ({{ActiveMonster.StrengthBonus}})</td>
+								<td>{{ActiveMonster.dexterity}} ({{ActiveMonster.DexterityBonus}})</td>
+								<td>{{ActiveMonster.constitution}} ({{ActiveMonster.ConstitutionBonus}})</td>
+								<td>{{ActiveMonster.intelligence}} ({{ActiveMonster.IntelligenceBonus}})</td>
+								<td>{{ActiveMonster.wisdom}} ({{ActiveMonster.WisdomBonus}})</td>
+								<td>{{ActiveMonster.charisma}} ({{ActiveMonster.CharismaBonus}})</td>
 							</tr>
 						</table>
 					</div>
@@ -225,12 +227,12 @@
 					<div>
 						<label>Senses</label> {{ActiveMonster.senses}}
 					</div>
-					<div>
+					<div data-ng-show="ActiveMonster.languages">
 						<label>Languages</label> {{ActiveMonster.languages}}
 					</div>
 					<div>
 						<label>Challenge</label>
-						{{ActiveMonster.challenge_rating}}
+						{{ActiveMonster.challenge_rating}} ({{ActiveMonster.XP}} XP)
 					</div>
 					<hr>
 					<div data-ng-repeat="a in ActiveMonster.special_abilities">
@@ -238,7 +240,7 @@
 					</div>
 				</div>
 				<div style="float: right; width: 48%;">
-					<div class="MonsterName">Actions</div>
+					<div class="Action">Actions</div>
 
 					<hr>
 					<div data-ng-repeat="action in ActiveMonster.actions">
@@ -246,7 +248,7 @@
 						
 					</div>
 					<div data-ng-show="ActiveMonster.legendary_actions.length>0">
-					<div class="MonsterName">Legendary Actions</div>
+					<div class="Action">Legendary Actions</div>
 					<hr>
 					<div data-ng-repeat="action in ActiveMonster.legendary_actions">
 						<p><strong>{{action.name}}</strong> {{action.desc}}</p>

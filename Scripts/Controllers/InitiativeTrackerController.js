@@ -3,6 +3,7 @@
 itApp.controller("InitiativeController", function InitiativeController($scope, $http) {
 	// Variables
 	$scope.monsterData = [];
+	$scope.xpData = [];
 	$scope.selectedMonster = {};
 	$scope.roundCount = 0;
 	$scope.ActiveMonster = {};
@@ -82,7 +83,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 			width : '20px',
 			enableCellEdit : false
 		}, {
-			field : 'name',
+			field : 'Name',
 			enableCellEdit : false,
 			width : '***'
 		}, {
@@ -158,12 +159,19 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 		for (var i = 1; i <= $scope.MonsterCount; i++) {
 
 			var monster = angular.copy($scope.selectedMonster);
-			monster.name = $scope.MonsterName + ' ' + i;
+			monster.Name = $scope.MonsterName + ' ' + i;
 			monster.Bonus = $scope.MonsterBonus;
 			monster.CurrentHP = $scope.MonsterMaxHP;
 			monster.Saves = "";
 			monster.Skills = "";
-
+			monster.StrengthBonus = $scope.CalculateBonus(monster.strength);
+			monster.DexterityBonus = $scope.CalculateBonus(monster.dexterity);
+			monster.ConstitutionBonus = $scope.CalculateBonus(monster.constitution);
+			monster.IntelligenceBonus = $scope.CalculateBonus(monster.intelligence);
+			monster.WisdomBonus = $scope.CalculateBonus(monster.wisdom);
+			monster.CharismaBonus = $scope.CalculateBonus(monster.charisma);
+			monster.XP = $scope.CalculateXP(monster.challenge_rating);
+			
 			$scope.BuildSkills(monster);
 
 			$scope.Monsters.push(monster);
@@ -216,7 +224,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 
 					monster.Skills = monster.Skills + "Acrobatics " + "+" + monster[property];
 				}
-				
+
 				if (property == "arcana") {
 					if (monster.Skills != "") {
 						monster.Skills = monster.Skills + ", ";
@@ -224,15 +232,15 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 
 					monster.Skills = monster.Skills + "Arcana " + "+" + monster[property];
 				}
-				
+
 				if (property == "athletics") {
 					if (monster.Skills != "") {
 						monster.Skills = monster.Skills + ", ";
 					}
 
 					monster.Skills = monster.Skills + "Athletics " + "+" + monster[property];
-				}				
-				
+				}
+
 				if (property == "deception") {
 					if (monster.Skills != "") {
 						monster.Skills = monster.Skills + ", ";
@@ -240,14 +248,14 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 
 					monster.Skills = monster.Skills + "Deception " + "+" + monster[property];
 				}
-				
+
 				if (property == "history") {
 					if (monster.Skills != "") {
 						monster.Skills = monster.Skills + ", ";
 					}
 
 					monster.Skills = monster.Skills + "History " + "+" + monster[property];
-				}				
+				}
 
 				if (property == "insight") {
 					if (monster.Skills != "") {
@@ -340,6 +348,28 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 		}
 	};
 
+	$scope.CalculateXP = function(challenge){
+		$scope.xpData.forEach(function(item){
+			var x = 1;
+		});
+		
+		var x = Enumerable.From($scope.xpData).First(function(x){return x.challenge == challenge;});
+		
+		return x.xp;
+	};
+
+	$scope.CalculateBonus = function(stat) {
+		var bonus = Math.floor(((stat - 10) / 2));
+
+		if (bonus <= 0) {
+			return bonus;
+		} else if (bonus > 0) {
+			return "+" + bonus;
+		} else {
+			return "-" + bonus;
+		}
+	};
+
 	$scope.ClearMonsters = function() {
 		$scope.Monsters = [];
 	};
@@ -387,7 +417,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 
 		if ($scope.Player1) {
 			var player1 = {};
-			player1.name = $scope.Player1;
+			player1.Name = $scope.Player1;
 			player1.Initiative = Number($scope.Player1Initiative);
 			player1.IsTurn = false;
 			$scope.initiative.push(player1);
@@ -395,7 +425,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 
 		if ($scope.Player2) {
 			var player2 = {};
-			player2.name = $scope.Player2;
+			player2.Name = $scope.Player2;
 			player2.Initiative = Number($scope.Player2Initiative);
 			player2.IsTurn = false;
 			$scope.initiative.push(player2);
@@ -403,7 +433,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 
 		if ($scope.Player3) {
 			var player3 = {};
-			player3.name = $scope.Player3;
+			player3.Name = $scope.Player3;
 			player3.Initiative = Number($scope.Player3Initiative);
 			player3.IsTurn = false;
 			$scope.initiative.push(player3);
@@ -411,7 +441,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 
 		if ($scope.Player4) {
 			var player4 = {};
-			player4.name = $scope.Player4;
+			player4.Name = $scope.Player4;
 			player4.Initiative = Number($scope.Player4Initiative);
 			player4.IsTurn = false;
 			$scope.initiative.push(player4);
@@ -419,7 +449,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 
 		if ($scope.Player5) {
 			var player5 = {};
-			player5.name = $scope.Player5;
+			player5.Name = $scope.Player5;
 			player5.Initiative = Number($scope.Player5Initiative);
 			player5.IsTurn = false;
 			$scope.initiative.push(player5);
@@ -427,7 +457,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 
 		if ($scope.Player6) {
 			var player6 = {};
-			player6.name = $scope.Player6;
+			player6.Name = $scope.Player6;
 			player6.Initiative = Number($scope.Player6Initiative);
 			player6.IsTurn = false;
 			$scope.initiative.push(player6);
@@ -435,7 +465,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 
 		if ($scope.Player7) {
 			var player7 = {};
-			player7.name = $scope.Player7;
+			player7.Name = $scope.Player7;
 			player7.Initiative = Number($scope.Player7Initiative);
 			player7.IsTurn = false;
 			$scope.initiative.push(player7);
@@ -443,7 +473,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 
 		if ($scope.Player8) {
 			var player8 = {};
-			player8.name = $scope.Player8;
+			player8.Name = $scope.Player8;
 			player8.Initiative = Number($scope.Player8Initiative);
 			player8.IsTurn = false;
 			$scope.initiative.push(player8);
@@ -451,7 +481,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 
 		if ($scope.Player9) {
 			var player9 = {};
-			player9.name = $scope.Player9;
+			player9.Name = $scope.Player9;
 			player9.Initiative = Number($scope.Player9Initiative);
 			player9.IsTurn = false;
 			$scope.initiative.push(player9);
@@ -459,7 +489,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 
 		if ($scope.Player10) {
 			var player10 = {};
-			player10.name = $scope.Player10;
+			player10.Name = $scope.Player10;
 			player10.Initiative = Number($scope.Player10Initiative);
 			player10.IsTurn = false;
 			$scope.initiative.push(player10);
@@ -500,6 +530,10 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 		if ($scope.BuildDefault == true) {
 			$scope.ActiveMonster = $scope.monsterData[1];
 		}
+	});
+
+	$http.get('Data/xp.json').success(function(response){
+		$scope.xpData = response;
 	});
 
 	$scope.SelectMonster = function() {
