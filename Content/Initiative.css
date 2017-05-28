@@ -24,6 +24,7 @@
         background-color: yellow;
         font-weight: bold;
         border: 1px solid black;
+        color: black;
     }
 
     .Dead {
@@ -43,8 +44,28 @@
         border: 1px solid black;
     }
     
-.gridCellNoBackground{
-	text-align: center;
-	vertical-align: middle;
-	/*background-color: white !important;*/		
-}
+	.gridCellNoBackground{
+		text-align: center;
+		vertical-align: middle;
+		/*background-color: white !important;*/		
+	}
+
+	.PlayerBox{
+	    height: 300px !important;    
+	}
+
+	.TopAlign{
+		vertical-align: top !important;
+	}
+
+	.FirstRow{
+		height: 350px;
+	}
+
+	.Grid-Cell-Center{
+		text-align: center;
+	}
+	
+	.InitiativeBox{
+		height: 905px;
+	}
