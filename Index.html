@@ -16,7 +16,7 @@
 	</head>
 	<body>
 
-		<div data-ng-controller="InitiativeController">
+		<div data-ng-controller="InitiativeController" style="margin-top: 10px;">
 			<div class="Outline Playerbox" >
 				<label>Players</label>
 				<table>
@@ -114,7 +114,7 @@
 			<div class="Outline Playerbox">
 				<label>Monsters</label>
 				<div>
-					Select: <select data-ng-options="monster as monster.name for monster in monsterData" data-ng-model="selectedMonster" data-ng-change="SelectMonster()"></select>
+					Select: <select data-ng-options="monster as monster.name for monster in monsterData" data-ng-model="selectedMonster" data-ng-change="SelectMonster()"></select>					
 				</div>
 				<div>
 					<div style="display: inline;">
@@ -146,7 +146,7 @@
 
 				<div data-ng-grid="MonstersGrid" style="width: 595px; height: 200px;"></div>
 			</div>
-			<div class="Outline" style="height: 860px;">
+			<div class="Outline InitiativeBox" >
 				<label>Initiative</label>
 				<div>
 					<input type="button" data-ng-click="Roll()" value="Roll Initiative"/>

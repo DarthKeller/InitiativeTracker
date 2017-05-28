@@ -4,6 +4,8 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 	// Variables
 	$scope.monsterData = [];
 	$scope.xpData = [];
+	$scope.players = [];
+	
 	$scope.selectedMonster = {};
 	$scope.roundCount = 0;
 	$scope.ActiveMonster = {};
@@ -534,6 +536,19 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 
 	$http.get('Data/xp.json').success(function(response){
 		$scope.xpData = response;
+	});
+
+	$http.get('Data/players.json').success(function(response){
+		$scope.players = response;
+		
+		for(var i =1; i<=$scope.players.length; i++){
+			var index = i-1;
+			var player =$scope.players[index];
+			
+			var variableName = "Player" + i;			
+			$scope[variableName] =  player.name;
+			
+		}
 	});
 
 	$scope.SelectMonster = function() {

@@ -1,8 +1,8 @@
 .StatBlock{
 	position: absolute;
-	top: 360px;
+	top: 330px;
 	width: 865px;
-	height: 550px;
+	height: 585px;
 	background-color: #fdf1dc;
 	font-size: smaller;
 	overflow-y: auto;

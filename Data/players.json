@@ -1,0 +1,48 @@
+[
+	{
+		"name": "TJ",
+		"initiative": 1,
+		"passivePerception": -1,
+		"passiveStealth": 1,
+		"passiveInvestigation": 1,
+		"perceptionBonus": 1,
+		"stealthBonus": 1,
+		"investigateBonus": 1
+	}, {
+		"name": "Jay",
+		"initiative": 2,
+		"passivePerception": 1,
+		"passiveStealth": 1,
+		"passiveInvestigation": 1,
+		"perceptionBonus": 1,
+		"stealthBonus": 1,
+		"investigateBonus": 1
+	}, {
+		"name": "Hector",
+		"initiative": 3,
+		"passivePerception": 1,
+		"passiveStealth": 1,
+		"passiveInvestigation": 1,
+		"perceptionBonus": 1,
+		"stealthBonus": 1,
+		"investigateBonus": 1
+	}, {
+		"name": "Kelly",
+		"initiative": 4,
+		"passivePerception": 1,
+		"passiveStealth": 1,
+		"passiveInvestigation": 1,
+		"perceptionBonus": 1,
+		"stealthBonus": 1,
+		"investigateBonus": 1
+	}, {
+		"name": "Jess",
+		"initiative": 5,
+		"passivePerception": 1,
+		"passiveStealth": 1,
+		"passiveInvestigation": 1,
+		"perceptionBonus": 1,
+		"stealthBonus": 1,
+		"investigateBonus": 1
+	}
+]
