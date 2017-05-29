@@ -5,7 +5,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 	$scope.monsterData = [];
 	$scope.xpData = [];
 	$scope.players = [];
-	
+
 	$scope.selectedMonster = {};
 	$scope.roundCount = 0;
 	$scope.ActiveMonster = {};
@@ -159,24 +159,35 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 			$scope.MonsterCount = 1;
 
 		for (var i = 1; i <= $scope.MonsterCount; i++) {
+			if ($scope.selectedMonster.name != "Select") {
+				var monster = angular.copy($scope.selectedMonster);
+				monster.Name = $scope.MonsterName + ' ' + i;
+				monster.Bonus = $scope.MonsterBonus;
+				monster.CurrentHP = $scope.MonsterMaxHP;
+				monster.Saves = "";
+				monster.Skills = "";
+				monster.StrengthBonus = $scope.CalculateBonus(monster.strength);
+				monster.DexterityBonus = $scope.CalculateBonus(monster.dexterity);
+				monster.ConstitutionBonus = $scope.CalculateBonus(monster.constitution);
+				monster.IntelligenceBonus = $scope.CalculateBonus(monster.intelligence);
+				monster.WisdomBonus = $scope.CalculateBonus(monster.wisdom);
+				monster.CharismaBonus = $scope.CalculateBonus(monster.charisma);
+				monster.XP = $scope.CalculateXP(monster.challenge_rating);
 
-			var monster = angular.copy($scope.selectedMonster);
-			monster.Name = $scope.MonsterName + ' ' + i;
-			monster.Bonus = $scope.MonsterBonus;
-			monster.CurrentHP = $scope.MonsterMaxHP;
-			monster.Saves = "";
-			monster.Skills = "";
-			monster.StrengthBonus = $scope.CalculateBonus(monster.strength);
-			monster.DexterityBonus = $scope.CalculateBonus(monster.dexterity);
-			monster.ConstitutionBonus = $scope.CalculateBonus(monster.constitution);
-			monster.IntelligenceBonus = $scope.CalculateBonus(monster.intelligence);
-			monster.WisdomBonus = $scope.CalculateBonus(monster.wisdom);
-			monster.CharismaBonus = $scope.CalculateBonus(monster.charisma);
-			monster.XP = $scope.CalculateXP(monster.challenge_rating);
-			
-			$scope.BuildSkills(monster);
+				$scope.BuildSkills(monster);
 
-			$scope.Monsters.push(monster);
+				$scope.Monsters.push(monster);
+			} else {
+				var monster = {};
+				monster.Name = $scope.MonsterName + ' ' + i;
+				monster.name = $scope.MonsterName;
+				monster.Bonus = $scope.MonsterBonus;
+				monster.hit_points = $scope.MonsterMaxHP;
+				monster.CurrentHP = $scope.MonsterMaxHP;
+				monster.armor_class = $scope.MonsterAC;
+								$scope.Monsters.push(monster);
+
+			}
 
 		}
 
@@ -350,13 +361,15 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 		}
 	};
 
-	$scope.CalculateXP = function(challenge){
-		$scope.xpData.forEach(function(item){
+	$scope.CalculateXP = function(challenge) {
+		$scope.xpData.forEach(function(item) {
 			var x = 1;
 		});
-		
-		var x = Enumerable.From($scope.xpData).First(function(x){return x.challenge == challenge;});
-		
+
+		var x = Enumerable.From($scope.xpData).First(function(x) {
+			return x.challenge == challenge;
+		});
+
 		return x.xp;
 	};
 
@@ -534,20 +547,20 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 		}
 	});
 
-	$http.get('Data/xp.json').success(function(response){
+	$http.get('Data/xp.json').success(function(response) {
 		$scope.xpData = response;
 	});
 
-	$http.get('Data/players.json').success(function(response){
+	$http.get('Data/players.json').success(function(response) {
 		$scope.players = response;
-		
-		for(var i =1; i<=$scope.players.length; i++){
-			var index = i-1;
-			var player =$scope.players[index];
-			
-			var variableName = "Player" + i;			
-			$scope[variableName] =  player.name;
-			
+
+		for (var i = 1; i <= $scope.players.length; i++) {
+			var index = i - 1;
+			var player = $scope.players[index];
+
+			var variableName = "Player" + i;
+			$scope[variableName] = player.name;
+
 		}
 	});
 
