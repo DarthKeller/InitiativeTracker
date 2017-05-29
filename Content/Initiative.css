@@ -76,3 +76,11 @@
 	.InitiativeBox{
 		height: 905px;
 	}
+
+	.Span-Odd{
+		background-color: #e6e6e6;
+	}
+	
+	.Span-Even{
+		background-color: white;
+	}

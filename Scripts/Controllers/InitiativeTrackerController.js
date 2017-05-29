@@ -19,6 +19,8 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 	$scope.MonsterAC = '';
 	$scope.MonsterMaxHP = '';
 	$scope.SelectedItem = {};
+	$scope.EncounterXP = 0;
+	$scope.XPPerPlayer = 0;
 
 	$scope.Player1 = '';
 	$scope.Player1Initiative = '';
@@ -77,6 +79,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 		enableRowSelection : true,
 		enableSorting : false,
 		rowHeight : 23,
+		showFooter: true,		
 		columnDefs : [{
 			field : 'IsTurn',
 			displayName : '',
@@ -117,8 +120,14 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 			displayName : '',
 			cellTemplate : removeTemplate,
 			enableCellEdit : false,
-			width : '*'
-		}]
+			cellClass: 'Grid-Cell-Center',
+			width : '50px'
+		}],
+		afterSelectionChange: function(row){
+			if($scope.ActiveMonster != row.entity){
+				$scope.ActiveMonster = row.entity;	
+			}			
+		}
 	};
 
 	$scope.InitiativeGrid.rowTemplate = '<div style="height: 100%; " ng-class="{Dead: row.getProperty(\'CurrentHP\')<=\'0\', Full: row.getProperty(\'CurrentHP\') == row.getProperty(\'hit_points\'), Bloody: row.getProperty(\'CurrentHP\') < row.getProperty(\'BloodyValue\'),  Hurt: row.getProperty(\'CurrentHP\')<row.getProperty(\'hit_points\') && row.getProperty(\'CurrentHP\') > row.getProperty(\'BloodyValue\'), Player:  !row.getProperty(\'hit_points\')}">' + '<div ng-repeat="col in renderedColumns" ng-class="col.colIndex()" class="ngCell ">' + '<div ng-cell></div>' + '</div>' + '</div>';
@@ -413,6 +422,8 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 
 	$scope.Roll = function() {
 		$scope.initiative = [];
+		$scope.EncounterXP = 0;
+		$scope.XPPerPlayer = 0;
 		var count = $scope.Monsters.length;
 		for (var i = 0; i < count; i++) {
 			var monster = $scope.Monsters[i];
@@ -427,6 +438,8 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 			x.Initiative = final;
 			//x.CurrentHP = monster.CurrentHP;
 			x.IsTurn = false;
+			
+			$scope.EncounterXP += Number(x.XP);
 
 			$scope.initiative.push(x);
 		}
@@ -510,6 +523,8 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 			player10.IsTurn = false;
 			$scope.initiative.push(player10);
 		}
+
+		$scope.XPPerPlayer = Number($scope.EncounterXP) / Number($scope.players.length);
 
 		var sortedInitiative = Enumerable.From($scope.initiative).OrderByDescending(function(i) {
 			return i.Initiative;
