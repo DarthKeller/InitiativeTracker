@@ -154,13 +154,15 @@
 				</div>
 				<div>
 					<input type="button" data-ng-click="ProgressInitiative()" value="Next"/>
-					<span>Round Counter: {{roundCount}}</span>
+					<span class="Span-Odd">Round Counter: {{roundCount}}</span>
+					<span class="Span-Even">Encounter XP: {{EncounterXP | number}}</span>
+					<span class="Span-Odd">XP Per Player: {{XPPerPlayer | number}}</span>
 				</div>
 				<div data-ng-grid="InitiativeGrid" style="width: 920px; min-height: 750px;"></div>
 
 			</div>
 
-			<div class="Outline StatBlock" data-ng-show="ActiveMonster.hit_points">
+			<div class="Outline StatBlock">
 				<div style="float: left; width: 48%; margin-right: 5px;">
 					<div class="MonsterName">
 						{{ActiveMonster.name}}
@@ -232,7 +234,7 @@
 					</div>
 					<div>
 						<label>Challenge</label>
-						{{ActiveMonster.challenge_rating}} ({{ActiveMonster.XP}} XP)
+						{{ActiveMonster.challenge_rating}} ({{ActiveMonster.XP | number}} XP)
 					</div>
 					<hr>
 					<div data-ng-repeat="a in ActiveMonster.special_abilities">

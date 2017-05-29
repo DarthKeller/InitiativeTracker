@@ -5,7 +5,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 	$scope.monsterData = [];
 	$scope.xpData = [];
 	$scope.players = [];
-	
+
 	$scope.selectedMonster = {};
 	$scope.roundCount = 0;
 	$scope.ActiveMonster = {};
@@ -19,6 +19,8 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 	$scope.MonsterAC = '';
 	$scope.MonsterMaxHP = '';
 	$scope.SelectedItem = {};
+	$scope.EncounterXP = 0;
+	$scope.XPPerPlayer = 0;
 
 	$scope.Player1 = '';
 	$scope.Player1Initiative = '';
@@ -77,6 +79,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 		enableRowSelection : true,
 		enableSorting : false,
 		rowHeight : 23,
+		showFooter: true,		
 		columnDefs : [{
 			field : 'IsTurn',
 			displayName : '',
@@ -117,11 +120,17 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 			displayName : '',
 			cellTemplate : removeTemplate,
 			enableCellEdit : false,
-			width : '*'
-		}]
+			cellClass: 'Grid-Cell-Center',
+			width : '50px'
+		}],
+		afterSelectionChange: function(row){
+			if($scope.ActiveMonster != row.entity){
+				$scope.ActiveMonster = row.entity;	
+			}			
+		}
 	};
 
-	$scope.InitiativeGrid.rowTemplate = '<div style="height: 100%; " ng-class="{Dead: row.getProperty(\'CurrentHP\')<=\'0\', Full: row.getProperty(\'CurrentHP\') == row.getProperty(\'hit_points\'), Hurt: row.getProperty(\'CurrentHP\')<row.getProperty(\'hit_points\'), Player:  !row.getProperty(\'CurrentHP\')}">' + '<div ng-repeat="col in renderedColumns" ng-class="col.colIndex()" class="ngCell ">' + '<div ng-cell></div>' + '</div>' + '</div>';
+	$scope.InitiativeGrid.rowTemplate = '<div style="height: 100%; " ng-class="{Dead: row.getProperty(\'CurrentHP\')<=\'0\', Full: row.getProperty(\'CurrentHP\') == row.getProperty(\'hit_points\'), Bloody: row.getProperty(\'CurrentHP\') < row.getProperty(\'BloodyValue\'),  Hurt: row.getProperty(\'CurrentHP\')<row.getProperty(\'hit_points\') && row.getProperty(\'CurrentHP\') > row.getProperty(\'BloodyValue\'), Player:  !row.getProperty(\'hit_points\')}">' + '<div ng-repeat="col in renderedColumns" ng-class="col.colIndex()" class="ngCell ">' + '<div ng-cell></div>' + '</div>' + '</div>';
 
 	$scope.ProgressInitiative = function() {
 		var active = Enumerable.From($scope.initiative).Where(function(item) {
@@ -159,24 +168,36 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 			$scope.MonsterCount = 1;
 
 		for (var i = 1; i <= $scope.MonsterCount; i++) {
+			if ($scope.selectedMonster.name != "Select") {
+				var monster = angular.copy($scope.selectedMonster);
+				monster.Name = $scope.MonsterName + ' ' + i;
+				monster.Bonus = $scope.MonsterBonus;
+				monster.CurrentHP = $scope.MonsterMaxHP;
+				monster.Saves = "";
+				monster.Skills = "";
+				monster.StrengthBonus = $scope.CalculateBonus(monster.strength);
+				monster.DexterityBonus = $scope.CalculateBonus(monster.dexterity);
+				monster.ConstitutionBonus = $scope.CalculateBonus(monster.constitution);
+				monster.IntelligenceBonus = $scope.CalculateBonus(monster.intelligence);
+				monster.WisdomBonus = $scope.CalculateBonus(monster.wisdom);
+				monster.CharismaBonus = $scope.CalculateBonus(monster.charisma);
+				monster.XP = $scope.CalculateXP(monster.challenge_rating);
+				monster.BloodyValue = Math.floor(Number(monster.hit_points) / 2);
 
-			var monster = angular.copy($scope.selectedMonster);
-			monster.Name = $scope.MonsterName + ' ' + i;
-			monster.Bonus = $scope.MonsterBonus;
-			monster.CurrentHP = $scope.MonsterMaxHP;
-			monster.Saves = "";
-			monster.Skills = "";
-			monster.StrengthBonus = $scope.CalculateBonus(monster.strength);
-			monster.DexterityBonus = $scope.CalculateBonus(monster.dexterity);
-			monster.ConstitutionBonus = $scope.CalculateBonus(monster.constitution);
-			monster.IntelligenceBonus = $scope.CalculateBonus(monster.intelligence);
-			monster.WisdomBonus = $scope.CalculateBonus(monster.wisdom);
-			monster.CharismaBonus = $scope.CalculateBonus(monster.charisma);
-			monster.XP = $scope.CalculateXP(monster.challenge_rating);
-			
-			$scope.BuildSkills(monster);
+				$scope.BuildSkills(monster);
 
-			$scope.Monsters.push(monster);
+				$scope.Monsters.push(monster);
+			} else {
+				var monster = {};
+				monster.Name = $scope.MonsterName + ' ' + i;
+				monster.name = $scope.MonsterName;
+				monster.Bonus = $scope.MonsterBonus;
+				monster.hit_points = $scope.MonsterMaxHP;
+				monster.CurrentHP = $scope.MonsterMaxHP;
+				monster.armor_class = $scope.MonsterAC;
+								$scope.Monsters.push(monster);
+
+			}
 
 		}
 
@@ -350,13 +371,15 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 		}
 	};
 
-	$scope.CalculateXP = function(challenge){
-		$scope.xpData.forEach(function(item){
+	$scope.CalculateXP = function(challenge) {
+		$scope.xpData.forEach(function(item) {
 			var x = 1;
 		});
-		
-		var x = Enumerable.From($scope.xpData).First(function(x){return x.challenge == challenge;});
-		
+
+		var x = Enumerable.From($scope.xpData).First(function(x) {
+			return x.challenge == challenge;
+		});
+
 		return x.xp;
 	};
 
@@ -399,6 +422,8 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 
 	$scope.Roll = function() {
 		$scope.initiative = [];
+		$scope.EncounterXP = 0;
+		$scope.XPPerPlayer = 0;
 		var count = $scope.Monsters.length;
 		for (var i = 0; i < count; i++) {
 			var monster = $scope.Monsters[i];
@@ -413,6 +438,8 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 			x.Initiative = final;
 			//x.CurrentHP = monster.CurrentHP;
 			x.IsTurn = false;
+			
+			$scope.EncounterXP += Number(x.XP);
 
 			$scope.initiative.push(x);
 		}
@@ -497,6 +524,8 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 			$scope.initiative.push(player10);
 		}
 
+		$scope.XPPerPlayer = Number($scope.EncounterXP) / Number($scope.players.length);
+
 		var sortedInitiative = Enumerable.From($scope.initiative).OrderByDescending(function(i) {
 			return i.Initiative;
 		}).Select(function(s) {
@@ -534,20 +563,20 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 		}
 	});
 
-	$http.get('Data/xp.json').success(function(response){
+	$http.get('Data/xp.json').success(function(response) {
 		$scope.xpData = response;
 	});
 
-	$http.get('Data/players.json').success(function(response){
+	$http.get('Data/players.json').success(function(response) {
 		$scope.players = response;
-		
-		for(var i =1; i<=$scope.players.length; i++){
-			var index = i-1;
-			var player =$scope.players[index];
-			
-			var variableName = "Player" + i;			
-			$scope[variableName] =  player.name;
-			
+
+		for (var i = 1; i <= $scope.players.length; i++) {
+			var index = i - 1;
+			var player = $scope.players[index];
+
+			var variableName = "Player" + i;
+			$scope[variableName] = player.name;
+
 		}
 	});
 

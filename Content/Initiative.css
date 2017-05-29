@@ -21,11 +21,18 @@
     }
 
     .Hurt {
-        background-color: yellow;
+        background-color: #00ff55;
         font-weight: bold;
         border: 1px solid black;
         color: black;
     }
+
+	.Bloody{
+        background-color: yellow;
+        font-weight: bold;
+        border: 1px solid black;
+        color: black;		
+	}
 
     .Dead {
         background-color: red;
@@ -68,4 +75,12 @@
 	
 	.InitiativeBox{
 		height: 905px;
+	}
+
+	.Span-Odd{
+		background-color: #e6e6e6;
+	}
+	
+	.Span-Even{
+		background-color: white;
 	}
