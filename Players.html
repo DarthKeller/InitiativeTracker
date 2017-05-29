@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html data-ng-app="itApp">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Initiative Tracker</title>
+		<link href='https://fonts.googleapis.com/css?family=Viga' rel='stylesheet'>
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Tienne" rel="stylesheet">
+		<link href="Content/bootstrap.css" rel="stylesheet">
+		<link href="Content/site.css" rel="stylesheet">
+		<link href="Content/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet">
+		<link href="Content/Initiative.css" rel="stylesheet" />
+		<link href="Content/MonsterStatBlock.css" rel="stylesheet" />
+		<link href="Content/ng-grid.css" rel="stylesheet" />
+	</head>
+	<body>	
+
+<div style="margin: 5px;" data-ng-controller="PlayerController">
+	<div data-ng-grid="PlayersGrid" style=" min-height:200px;"></div>
+	<div>
+		<input type="button" data-ng-click="RollAll()" value="Roll"/>
+	</div>	
+</div>
+
+
+		<script src="Scripts/modernizr-2.6.2.js"></script>
+		<script src="Scripts/jquery-1.10.2.js"></script>
+		<script src="Scripts/bootstrap.js"></script>
+		<script src="Scripts/respond.js"></script>
+		<script src="Scripts/angular-1.2.14/angular.js"></script>
+		<script src="Scripts/angular-1.2.14/angular-sanitize.js"></script>
+		<script src="Scripts/angular-1.2.14/angular-resource.js"></script>
+		<script src="Scripts/angular-ui-bootstrap/ui-bootstrap-0.6.0.js"></script>
+		<script src="Scripts/angular-ui-bootstrap/ui-bootstrap-tpls-0.6.0.js"></script>
+		<script src="Scripts/angular-ng-grid/ng-grid-2.0.7.debug.js"></script>
+		<script src="Scripts/Controllers/app.js"></script>
+		<script src="Scripts/moment.js"></script>
+		<script src="Scripts/jquery.linq/linq.js"></script>
+		<script src="Scripts/jquery.linq/jquery.linq.js"></script>
+		<script src="Scripts/Controllers/PlayerController.js"></script>
+	</body>
+</html>
