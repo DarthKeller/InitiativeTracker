@@ -16,16 +16,15 @@ itApp.controller("PlayerController", function PlayerController($scope, $http) {
 		data: 'players',
 		columnDefs: [
 			{field: 'name', displayName: 'Name'},
-			{field: 'initiative', displayName: 'Init Bonus', cellClass: 'Grid-Cell-Center'},
 			{field: 'passivePerception', displayName: 'P Perception', cellClass: 'Grid-Cell-Center'},
 			{field: 'passiveStealth', displayName: 'P Stealth', cellClass: 'Grid-Cell-Center'},
 			{field: 'passiveInvestigation', displayName: 'P Investigation', cellClass: 'Grid-Cell-Center'},
 			{field: 'perceptionBonus', displayName: 'Perception', cellClass: 'Grid-Cell-Center'},
-			{field: 'perceptionRoll', displayName: 'Perception Roll', cellClass: 'Grid-Cell-Center'},
+			{field: 'perceptionRoll', displayName: 'Perception Roll', cellClass: 'Grid-Cell-Center-Bold'},
 			{field: 'stealthBonus', displayName: 'Stealth', cellClass: 'Grid-Cell-Center'},
-			{field: 'stealthRoll', displayName: 'Stealth Roll', cellClass: 'Grid-Cell-Center'},
+			{field: 'stealthRoll', displayName: 'Stealth Roll', cellClass: 'Grid-Cell-Center-Bold'},
 			{field: 'investigateBonus', displayName: 'Investigate', cellClass: 'Grid-Cell-Center'},
-			{field: 'investigateRoll', displayName: 'Investigate Roll', cellClass: 'Grid-Cell-Center'}
+			{field: 'investigateRoll', displayName: 'Investigate Roll', cellClass: 'Grid-Cell-Center-Bold'}
 		]
 	};
 	

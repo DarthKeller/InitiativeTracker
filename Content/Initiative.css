@@ -73,6 +73,11 @@
 		text-align: center;
 	}
 	
+	.Grid-Cell-Center-Bold{
+		text-align: center;
+		font-weight: bold;
+	}
+	
 	.InitiativeBox{
 		height: 905px;
 	}
