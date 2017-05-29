@@ -121,7 +121,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 		}]
 	};
 
-	$scope.InitiativeGrid.rowTemplate = '<div style="height: 100%; " ng-class="{Dead: row.getProperty(\'CurrentHP\')<=\'0\', Full: row.getProperty(\'CurrentHP\') == row.getProperty(\'hit_points\'), Hurt: row.getProperty(\'CurrentHP\')<row.getProperty(\'hit_points\'), Player:  !row.getProperty(\'CurrentHP\')}">' + '<div ng-repeat="col in renderedColumns" ng-class="col.colIndex()" class="ngCell ">' + '<div ng-cell></div>' + '</div>' + '</div>';
+	$scope.InitiativeGrid.rowTemplate = '<div style="height: 100%; " ng-class="{Dead: row.getProperty(\'CurrentHP\')<=\'0\', Full: row.getProperty(\'CurrentHP\') == row.getProperty(\'hit_points\'), Bloody: row.getProperty(\'CurrentHP\') < row.getProperty(\'BloodyValue\'),  Hurt: row.getProperty(\'CurrentHP\')<row.getProperty(\'hit_points\') && row.getProperty(\'CurrentHP\') > row.getProperty(\'BloodyValue\'), Player:  !row.getProperty(\'hit_points\')}">' + '<div ng-repeat="col in renderedColumns" ng-class="col.colIndex()" class="ngCell ">' + '<div ng-cell></div>' + '</div>' + '</div>';
 
 	$scope.ProgressInitiative = function() {
 		var active = Enumerable.From($scope.initiative).Where(function(item) {
@@ -173,6 +173,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 				monster.WisdomBonus = $scope.CalculateBonus(monster.wisdom);
 				monster.CharismaBonus = $scope.CalculateBonus(monster.charisma);
 				monster.XP = $scope.CalculateXP(monster.challenge_rating);
+				monster.BloodyValue = Math.floor(Number(monster.hit_points) / 2);
 
 				$scope.BuildSkills(monster);
 
