@@ -238,7 +238,7 @@
 					</div>
 					<hr>
 					<div data-ng-repeat="a in ActiveMonster.special_abilities">
-						<p><strong>{{a.name}}:</strong> {{a.desc}}</p>
+						<p><strong>{{a.name}}:</strong> <span data-ng-bind-html="a.desc|newLines"></span>  </p>
 					</div>
 				</div>
 				<div style="float: right; width: 48%;">
@@ -246,7 +246,7 @@
 
 					<hr>
 					<div data-ng-repeat="action in ActiveMonster.actions">
-						<p><strong>{{action.name}}</strong> {{action.desc}}</p>
+						<p><strong>{{action.name}}</strong> <span data-ng-bind-html="action.desc|newLines"></span></p>
 						
 					</div>
 					<div data-ng-show="ActiveMonster.legendary_actions.length>0">
@@ -276,5 +276,6 @@
 		<script src="Scripts/jquery.linq/linq.js"></script>
 		<script src="Scripts/jquery.linq/jquery.linq.js"></script>
 		<script src="Scripts/Controllers/InitiativeTrackerController.js"></script>
+		<script src="Scripts/Filters/filters.js"></script>
 	</body>
 </html>
