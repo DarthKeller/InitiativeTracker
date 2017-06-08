@@ -1,7 +1,8 @@
 ﻿var itApp = angular.module('itApp', [
     'ui.bootstrap',
     'ngGrid',
-    'ngResource'
+    'ngResource',
+    'ngSanitize'
 ]).run(function ($templateCache) {
     
     //$templateCache.put("cellTemplate.html",

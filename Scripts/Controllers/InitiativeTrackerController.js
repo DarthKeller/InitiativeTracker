@@ -1,6 +1,6 @@
 ﻿//Initiative
 
-itApp.controller("InitiativeController", function InitiativeController($scope, $http) {
+itApp.controller("InitiativeController", function InitiativeController($scope, $http, $sanitize) {
 	// Variables
 	$scope.monsterData = [];
 	$scope.xpData = [];
@@ -426,13 +426,18 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 		$scope.XPPerPlayer = 0;
 		var count = $scope.Monsters.length;
 		for (var i = 0; i < count; i++) {
+			var final = 0;
 			var monster = $scope.Monsters[i];
-
 			var random = Math.random();
 			var multi = random * 21;
 			var result = Math.floor(multi);
 
-			var final = Number(result) + Number(monster.Bonus);
+			if(result == 0)
+			{
+				result = 1;
+			}
+
+			final = Number(result) + Number(monster.Bonus);	
 
 			var x = angular.copy(monster);
 			x.Initiative = final;
