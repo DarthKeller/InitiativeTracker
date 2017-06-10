@@ -80,14 +80,16 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 		enableSorting : false,
 		rowHeight : 23,
 		showFooter: true,		
-		columnDefs : [{
+		columnDefs : [
+		{
 			field : 'IsTurn',
 			displayName : '',
 			cellClass : 'gridCellNoBackground',
 			cellTemplate : turnTemplate,
 			width : '20px',
 			enableCellEdit : false
-		}, {
+		}, 
+		{
 			field : 'Name',
 			enableCellEdit : false,
 			width : '***'
@@ -130,7 +132,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 		}
 	};
 
-	$scope.InitiativeGrid.rowTemplate = '<div style="height: 100%; " ng-class="{Dead: row.getProperty(\'CurrentHP\')<=\'0\', Full: row.getProperty(\'CurrentHP\') == row.getProperty(\'hit_points\'), Bloody: row.getProperty(\'CurrentHP\') < row.getProperty(\'BloodyValue\'),  Hurt: row.getProperty(\'CurrentHP\')<row.getProperty(\'hit_points\') && row.getProperty(\'CurrentHP\') > row.getProperty(\'BloodyValue\'), Player:  !row.getProperty(\'hit_points\')}">' + '<div ng-repeat="col in renderedColumns" ng-class="col.colIndex()" class="ngCell ">' + '<div ng-cell></div>' + '</div>' + '</div>';
+	$scope.InitiativeGrid.rowTemplate = '<div style="height: 100%; " ng-class="{Dead: row.getProperty(\'CurrentHP\')<=\'0\', Full: row.getProperty(\'CurrentHP\') == row.getProperty(\'hit_points\'), Bloody: row.getProperty(\'CurrentHP\') <= row.getProperty(\'BloodyValue\'),  Hurt: row.getProperty(\'CurrentHP\')<row.getProperty(\'hit_points\') && row.getProperty(\'CurrentHP\') > row.getProperty(\'BloodyValue\'), Player:  !row.getProperty(\'hit_points\'), IsTurn: row.getProperty(\'IsTurn\')}">' + '<div ng-repeat="col in renderedColumns" ng-class="col.colIndex()" class="ngCell ">' + '<div ng-cell></div>' + '</div>' + '</div>';
 
 	$scope.ProgressInitiative = function() {
 		var active = Enumerable.From($scope.initiative).Where(function(item) {

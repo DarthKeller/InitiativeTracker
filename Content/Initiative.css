@@ -89,3 +89,9 @@
 	.Span-Even{
 		background-color: white;
 	}
+	
+	.IsTurn{
+		background-color: purple;
+		color: white;
+		font-weight: bold;
+	}
