@@ -36,9 +36,13 @@ The players page is for checking various player stats.  Since this is stored in 
 You must have a players.json file in your project, however, it does not need any real player information.  However, as it will speed up your setup time, it is recommended.  Simply modify the names and stats in the file using any text-editor of your choice, then save the file and you are ready to begin.
 
 ### Step 1 - Add player initiatives
+![alt text](https://github.com/DarthKeller/InitiativeTracker/blob/master/Content/Images/players.PNG "Players Section")
+
 Ask each player what their initiative roll was and record that information in the Initiative column under the Players section of the index page
 
 ### Step 2 - Add monsters
+![alt text](https://github.com/DarthKeller/InitiativeTracker/blob/master/Content/Images/Monsters.PNG "Monsters Section")
+
 The monsters.json file contains all the monsters from the [D&D 5e SRD](http://dnd.wizards.com/articles/features/systems-reference-document-srd).  If the monster you wish to use is in the SRD you can simply select the monster from the Select drop down list.  All relevant stats will be taken into account.
 
 If the monster you want to use is NOT in the SRD, simply fill in the items in the Monster section.
@@ -48,6 +52,8 @@ In both cases, make sure you have entered a number in the Count box (if left bla
 Repeat these steps for each monster you wish to add.
 
 ### Step 3 - Roll initiative
+![alt text](https://github.com/DarthKeller/InitiativeTracker/blob/master/Content/Images/Initiative.PNG "Initiative Section")
+
 In the Initiative section, hit the Roll Initiative button.  When you hit this button it will roll a d20 for each monster in your list, add the players to the same list, then order them by their final initiative before displaying them in the grid under the buttons.
 
 For your convenience, a round counter, the XP for the generated encounter, and the XP for each player, is shown under the Roll Initiative and Clear Initiative buttons.
@@ -92,6 +98,8 @@ This button removes all monsters from the grid under the monsters tab.  It does 
 This button clears the initiative grid, the monsters grid, as well as the player initiatives (but not the player names).  Use this button when combat is over and you're ready to start setting up the next encounter.
 
 ## Stat Block
+![alt text](https://github.com/DarthKeller/InitiativeTracker/blob/master/Content/Images/StatBlock.PNG "Stat Block")
+
 There is a stat block on the lower left of the index page.  Since we have the SRD, it will use all data from the SRD to populate fields and will attempt to create as complete a Monster Manual-esque stat block as possible.
 
 There is one known exception: Under Legendary Actions there is usually a paragraph that explains how many points the creature has per round, and how many they regain each round.  This information is missing from the SRD, and as such, is missing from this project.
