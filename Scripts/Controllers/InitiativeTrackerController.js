@@ -160,8 +160,14 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 		if (!monster.Damage) {
 			return;
 		}
+		
+		var newCurrentHP = Number(monster.CurrentHP) - Number(monster.Damage);
+		
+		if(newCurrentHP < 0){
+			newCurrentHP = 0;
+		}
 
-		monster.CurrentHP = Number(monster.CurrentHP) - Number(monster.Damage);
+		monster.CurrentHP = newCurrentHP;
 		monster.Damage = '';
 	};
 
