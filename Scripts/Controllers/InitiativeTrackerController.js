@@ -466,6 +466,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 		if ($scope.Player1) {
 			var player1 = {};
 			player1.Name = $scope.Player1;
+			//player1.name = $scope.Player1;
 			player1.Initiative = Number($scope.Player1Initiative);
 			player1.IsTurn = false;
 			$scope.initiative.push(player1);
