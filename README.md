@@ -8,7 +8,7 @@ The inspiration for this tracker was the initiative tracking in [Roll20](https:/
 
 ## Data Files
 ### monsters.json
-This file was downloaded from greylurk's [5e-ogl project](https://github.com/greylurk/5e-ogl).  All credit belongs to this developer.
+This file was downloaded from [greylurk's](https://github.com/greylurk) [5e-ogl project](https://github.com/greylurk/5e-ogl).  All credit belongs to this developer.
 
 ### xp.json
 This file contains a simple list of all monster CRs and their respective xp value.
