@@ -98,3 +98,6 @@ There is one known exception: Under Legendary Actions there is usually a paragra
 
 ## Players
 This page is not yet complete, but has a very simple interface.  It will load the data from the players.json file and display that data in a grid.  Clicking the Roll button at the bottom of the grid will roll Perception, Investigation and Stealth for each player in the grid, then display those results in the grid.
+
+## Note
+You MUST run this project on a server!  For Windows users, this means setting up IIS, creating an application, and pointing it at your copy of the Initiative Tracker project.  Since I'm using javascript to read json files, you cannot accomplish this while running either index.html or players.html from the file system directly.
