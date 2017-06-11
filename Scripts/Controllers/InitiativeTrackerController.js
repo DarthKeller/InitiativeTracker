@@ -434,6 +434,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 	};
 
 	$scope.Roll = function() {
+		var activePlayers = 0;
 		$scope.initiative = [];
 		$scope.EncounterXP = 0;
 		$scope.XPPerPlayer = 0;
@@ -468,6 +469,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 			player1.Initiative = Number($scope.Player1Initiative);
 			player1.IsTurn = false;
 			$scope.initiative.push(player1);
+			activePlayers++;
 		}
 
 		if ($scope.Player2) {
@@ -476,6 +478,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 			player2.Initiative = Number($scope.Player2Initiative);
 			player2.IsTurn = false;
 			$scope.initiative.push(player2);
+			activePlayers++;
 		}
 
 		if ($scope.Player3) {
@@ -484,6 +487,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 			player3.Initiative = Number($scope.Player3Initiative);
 			player3.IsTurn = false;
 			$scope.initiative.push(player3);
+			activePlayers++;
 		}
 
 		if ($scope.Player4) {
@@ -492,6 +496,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 			player4.Initiative = Number($scope.Player4Initiative);
 			player4.IsTurn = false;
 			$scope.initiative.push(player4);
+			activePlayers++;
 		}
 
 		if ($scope.Player5) {
@@ -500,6 +505,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 			player5.Initiative = Number($scope.Player5Initiative);
 			player5.IsTurn = false;
 			$scope.initiative.push(player5);
+			activePlayers++;
 		}
 
 		if ($scope.Player6) {
@@ -508,6 +514,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 			player6.Initiative = Number($scope.Player6Initiative);
 			player6.IsTurn = false;
 			$scope.initiative.push(player6);
+			activePlayers++;
 		}
 
 		if ($scope.Player7) {
@@ -516,6 +523,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 			player7.Initiative = Number($scope.Player7Initiative);
 			player7.IsTurn = false;
 			$scope.initiative.push(player7);
+			activePlayers++;
 		}
 
 		if ($scope.Player8) {
@@ -524,6 +532,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 			player8.Initiative = Number($scope.Player8Initiative);
 			player8.IsTurn = false;
 			$scope.initiative.push(player8);
+			activePlayers++;
 		}
 
 		if ($scope.Player9) {
@@ -532,6 +541,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 			player9.Initiative = Number($scope.Player9Initiative);
 			player9.IsTurn = false;
 			$scope.initiative.push(player9);
+			activePlayers++;
 		}
 
 		if ($scope.Player10) {
@@ -540,9 +550,10 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 			player10.Initiative = Number($scope.Player10Initiative);
 			player10.IsTurn = false;
 			$scope.initiative.push(player10);
+			activePlayers++;
 		}
 
-		$scope.XPPerPlayer = Number($scope.EncounterXP) / Number($scope.players.length);
+		$scope.XPPerPlayer = Number($scope.EncounterXP) / Number(activePlayers);
 
 		var sortedInitiative = Enumerable.From($scope.initiative).OrderByDescending(function(i) {
 			return i.Initiative;
