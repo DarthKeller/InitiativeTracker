@@ -52,7 +52,7 @@ In both cases, make sure you have entered a number in the Count box (if left bla
 Repeat these steps for each monster you wish to add.
 
 ### Step 3 - Roll initiative
-![alt text](https://github.com/DarthKeller/InitiativeTracker/blob/master/Content/Images/Initiative.PNG "Initiative Section")
+![alt text](https://github.com/DarthKeller/InitiativeTracker/blob/master/Content/Images/colors%202.PNG "Initiative Section")
 
 In the Initiative section, hit the Roll Initiative button.  When you hit this button it will roll a d20 for each monster in your list, add the players to the same list, then order them by their final initiative before displaying them in the grid under the buttons.
 
@@ -79,7 +79,7 @@ Because of the grid that I am using, the proper way to enter damage is to click 
 Players DO NOT have AC, Max or Current HP fields.  This information is not necessary for the DM.
 
 ### Colors in the grid
-![alt text](https://github.com/DarthKeller/InitiativeTracker/blob/master/Content/Images/colors.PNG "Colors in the grid")
+![alt text](https://github.com/DarthKeller/InitiativeTracker/blob/master/Content/Images/colors%202.PNG "Colors in the grid")
 
 * Purple - The entity whose turn it is currently
 * Dark Green - Full health mob
