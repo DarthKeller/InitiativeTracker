@@ -79,6 +79,8 @@ Because of the grid that I am using, the proper way to enter damage is to click 
 Players DO NOT have AC, Max or Current HP fields.  This information is not necessary for the DM.
 
 ### Colors in the grid
+![alt text](https://github.com/DarthKeller/InitiativeTracker/blob/master/Content/Images/colors.PNG "Colors in the grid")
+
 * Purple - The entity whose turn it is currently
 * Dark Green - Full health mob
 * Light Green - Injured mob
