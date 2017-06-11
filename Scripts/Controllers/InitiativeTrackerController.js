@@ -150,6 +150,11 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 
 		var nextActive = $scope.initiative[nextIndex];
 
+		while(nextActive.CurrentHP <= 0){
+			nextIndex++;
+			nextActive = $scope.initiative[nextIndex];
+		}
+
 		active.IsTurn = false;
 		nextActive.IsTurn = true;
 
