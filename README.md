@@ -66,8 +66,6 @@ The last column in the Initiative grid is Damage.  This field will always be bla
 
 The formula for calculating Current HP is CurrentHP - Damage.  Therefore, entering a negative number changes this formula to CurrentHP + Damage.
 
-Because of the grid that I am using, the proper way to enter damage is to click on the column in the row of the monster you wish to damage, enter a number, then click (do not press Enter) OUTSIDE of the grid (above the title bar, to the right of the border, etc)
-
 ### Fields
 * Name - The name of the monster.  I add a number to the end of each monster to make applying damage easier when you have to look between the battle map and the initiative tracker.
 * Initiative - The number rolled plus relevant modifiers.
