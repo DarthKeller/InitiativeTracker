@@ -26,7 +26,7 @@ Players in this file will also be automatically listed on the Index page so that
 
 ## Pages
 ### Index
-The index page is the initiative tracker.  It contains everything necessary to run a combat in D&D
+The index page is the initiative tracker.  It contains everything necessary to run an encounter in D&D
 
 ### Players
 The players page is for checking various player stats.  Since this is stored in a json file, these stats should not need to be updated very often.
