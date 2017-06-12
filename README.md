@@ -49,7 +49,7 @@ If the monster you want to use is NOT in the SRD, simply fill in the items in th
 
 In both cases, make sure you have entered a number in the Count box (if left blank, it will automatically add one copy of this monster).  Once complete, hit Add
 
-Repeat these steps for each monster you wish to add.
+Repeat these steps for each monster **TYPE** you wish to add.
 
 ### Step 3 - Roll initiative
 ![alt text](https://github.com/DarthKeller/InitiativeTracker/blob/master/Content/Images/colors%202.PNG "Initiative Section")
