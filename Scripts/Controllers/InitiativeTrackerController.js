@@ -68,7 +68,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 		}]
 	};
 
-	var faCellTemplate = '<input  type="text" ng-input="COL_FIELD" ng-model="COL_FIELD"  data-ng-blur="Damage(row.entity)" style="width: 100px;" />';
+	var faCellTemplate = '<input handle-Enter type="text" ng-input="COL_FIELD" ng-model="COL_FIELD"  data-ng-blur="Damage(row.entity)" style="width: 100px;" />';
 	var turnTemplate = '<i class="fa fa-arrow-right" data-ng-show="COL_FIELD==true"></i>';
 	var removeTemplate = '<i class="fa fa-trash" data-ng-show="COL_FIELD!=true" style="cursor:pointer;" data-ng-click="RemoveInitiative(row.entity)"></i>';
 
