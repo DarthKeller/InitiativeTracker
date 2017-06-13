@@ -413,6 +413,11 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 	};
 
 	$scope.ClearInitiative = function() {
+		
+		if(!confirm("Do you really want to clear the initiative order and all monsters?")){
+			return;
+		}
+		
 		$scope.Monsters = [];
 		$scope.initiative = [];
 		$scope.roundCount = 0;

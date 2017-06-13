@@ -152,11 +152,11 @@
 					<input type="button" data-ng-click="Roll()" value="Roll Initiative"/>
 					<input type="button" data-ng-click="ClearInitiative()" value="Clear Initiative"/>
 				</div>
-				<div>
-					<input type="button" data-ng-click="ProgressInitiative()" value="Next"/>
+				<div>					
 					<span class="Span-Odd">Round Counter: {{roundCount}}</span>
 					<span class="Span-Even">Encounter XP: {{EncounterXP | number}}</span>
 					<span class="Span-Odd">XP Per Player: {{XPPerPlayer | number}}</span>
+					<input type="button" data-ng-click="ProgressInitiative()" value="Next"/>
 				</div>
 				<div data-ng-grid="InitiativeGrid" style="width: 920px; min-height: 750px;"></div>
 
