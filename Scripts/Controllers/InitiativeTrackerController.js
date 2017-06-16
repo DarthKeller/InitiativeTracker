@@ -127,7 +127,9 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 		}],
 		afterSelectionChange: function(row){
 			if($scope.ActiveMonster != row.entity){
-				$scope.ActiveMonster = row.entity;	
+				if(row.entity.armor_class){
+					$scope.ActiveMonster = row.entity;
+				}						
 			}			
 		}
 	};
@@ -158,7 +160,10 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 		active.IsTurn = false;
 		nextActive.IsTurn = true;
 
-		$scope.ActiveMonster = nextActive;
+		if(nextActive.armor_class){
+			$scope.ActiveMonster = nextActive;	
+		}
+		
 	};
 
 	$scope.Damage = function(monster) {
