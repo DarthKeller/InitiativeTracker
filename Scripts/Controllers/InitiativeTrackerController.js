@@ -472,7 +472,13 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 			//x.CurrentHP = monster.CurrentHP;
 			x.IsTurn = false;
 			
-			$scope.EncounterXP += Number(x.XP);
+			if(x.XP){
+				$scope.EncounterXP += Number(x.XP);	
+			}
+			else{
+				$scope.EncounterXP = "Custom";
+			}
+			
 
 			$scope.initiative.push(x);
 		}
@@ -568,7 +574,13 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 			activePlayers++;
 		}
 
-		$scope.XPPerPlayer = Number($scope.EncounterXP) / Number(activePlayers);
+if(!$scope.EncounterXP == "Custom"){
+	$scope.XPPerPlayer = Number($scope.EncounterXP) / Number(activePlayers);
+}
+else{
+	$scope.XPPerPlayer = "Custom";
+}
+		
 
 		var sortedInitiative = Enumerable.From($scope.initiative).OrderByDescending(function(i) {
 			return i.Initiative;
