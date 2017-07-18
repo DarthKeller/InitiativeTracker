@@ -152,11 +152,12 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 
 		var nextActive = $scope.initiative[nextIndex];
 
-		while(nextActive.CurrentHP ){
-			if(nextActive.CurrentHP <= 0)
-			{
+		while(nextActive.CurrentHP <=0){
 			nextIndex++;
 			nextActive = $scope.initiative[nextIndex];
+
+			if(!nextActive.CurrentHP){
+				break;
 			}
 		}
 
