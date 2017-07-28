@@ -21,6 +21,7 @@ This file contains a list of the players in your campaign and a list of relevant
 * Perception Bonus
 * Investigation Bonus
 * Stealth Bonus
+* Armor Class
 
 Players in this file will also be automatically listed on the Index page so that a DM doesn't have to enter their name every session.
 
@@ -74,7 +75,7 @@ The formula for calculating Current HP is CurrentHP - Damage.  Therefore, enteri
 * Current HP - The mob's current HP
 * Damage - A field to enter an amount of HP to take from the monster
 
-Players DO NOT have AC, Max or Current HP fields.  This information is not necessary for the DM.
+Players DO NOT have Max or Current HP fields.  This information is not necessary for the DM.
 
 ### Colors in the grid
 ![alt text](https://github.com/DarthKeller/InitiativeTracker/blob/master/Content/Images/colors%202.PNG "Colors in the grid")
