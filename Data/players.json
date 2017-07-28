@@ -1,6 +1,7 @@
 [
 	{
 		"name": "Juriel",
+		"ac": 20,
 		"passivePerception": -1,
 		"passiveStealth": 1,
 		"passiveInvestigation": 1,
@@ -9,6 +10,7 @@
 		"investigateBonus": 1
 	}, {
 		"name": "Marlen",
+		"ac": 15,
 		"passivePerception": 1,
 		"passiveStealth": 1,
 		"passiveInvestigation": 1,
@@ -17,6 +19,7 @@
 		"investigateBonus": 1
 	}, {
 		"name": "Baern",
+		"ac": 14,
 		"passivePerception": 1,
 		"passiveStealth": 1,
 		"passiveInvestigation": 1,
@@ -25,6 +28,7 @@
 		"investigateBonus": 1
 	}, {
 		"name": "Aria",
+		"ac": 18,
 		"passivePerception": 1,
 		"passiveStealth": 1,
 		"passiveInvestigation": 1,
@@ -33,6 +37,7 @@
 		"investigateBonus": 1
 	}, {
 		"name": "Korrin",
+		"ac": 16,
 		"passivePerception": 1,
 		"passiveStealth": 1,
 		"passiveInvestigation": 1,

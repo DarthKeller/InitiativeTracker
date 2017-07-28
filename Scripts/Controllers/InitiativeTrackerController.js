@@ -22,6 +22,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 	$scope.EncounterXP = 0;
 	$scope.XPPerPlayer = 0;
 
+/*
 	$scope.Player1 = '';
 	$scope.Player1Initiative = '';
 
@@ -51,6 +52,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 
 	$scope.Player10 = '';
 	$scope.Player10Initiative = '';
+*/
 
 	//Grids
 	$scope.MonstersGrid = {
@@ -127,7 +129,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 		}],
 		afterSelectionChange: function(row){
 			if($scope.ActiveMonster != row.entity){
-				if(row.entity.armor_class){
+				if(row.entity.size){
 					$scope.ActiveMonster = row.entity;
 				}						
 			}			
@@ -164,7 +166,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 		active.IsTurn = false;
 		nextActive.IsTurn = true;
 
-		if(nextActive.armor_class){
+		if(nextActive.size){
 			$scope.ActiveMonster = nextActive;	
 		}
 		
@@ -430,7 +432,12 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 		$scope.Monsters = [];
 		$scope.initiative = [];
 		$scope.roundCount = 0;
+		
+		$scope.players.forEach(function(player){
+			player.initiative = '';
+		});
 
+/*
 		$scope.Player1Initiative = '';
 
 		$scope.Player2Initiative = '';
@@ -445,6 +452,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 		$scope.Player8Initiative = '';
 		$scope.Player9Initiative = '';
 		$scope.Player10Initiative = '';
+*/
 	};
 
 	$scope.Roll = function() {
@@ -483,6 +491,16 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 			$scope.initiative.push(x);
 		}
 
+		$scope.players.forEach(function(player){
+			var obj = {};
+			obj.Name=player.name;
+			obj.Initiative = Number(player.initiative);
+			obj.IsTurn = false;
+			obj.armor_class = player.ac;
+			$scope.initiative.push(obj);
+		});
+
+/*
 		if ($scope.Player1) {
 			var player1 = {};
 			player1.Name = $scope.Player1;
@@ -573,13 +591,13 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 			$scope.initiative.push(player10);
 			activePlayers++;
 		}
-
-if(!$scope.EncounterXP == "Custom"){
-	$scope.XPPerPlayer = Number($scope.EncounterXP) / Number(activePlayers);
-}
-else{
-	$scope.XPPerPlayer = "Custom";
-}
+*/
+		if($scope.EncounterXP != "Custom"){
+			$scope.XPPerPlayer = Number($scope.EncounterXP) / Number($scope.players.length);
+		}
+		else{
+			$scope.XPPerPlayer = "Custom";
+		}
 		
 
 		var sortedInitiative = Enumerable.From($scope.initiative).OrderByDescending(function(i) {
@@ -598,6 +616,11 @@ else{
 
 		$scope.initiative = sortedInitiative;
 	};
+
+$scope.RemovePlayer=function(player){
+	var index = $scope.players.indexOf(player);
+	$scope.players.splice(index, 1);
+};
 
 	$scope.RemoveInitiative = function(entity) {
 		var index = $scope.initiative.indexOf(entity);

@@ -23,15 +23,20 @@
 					<tr>
 						<td>Player</td>
 						<td>Initiative</td>
+						<td></td>
 					</tr>
-					<tr>
+					<tr data-ng-repeat="p in players">
 						<td>
-						<input type="text" name="Player1" data-ng-model="Player1"/>
+							<input type="text" data-ng-model="p.name"/>
 						</td>
 						<td>
-						<input type="text" name="Player1Initiative" data-ng-model="Player1Initiative" class="TextBox50"/>
+							<input type="text" data-ng-model="p.initiative" class="TextBox50"/>
+						</td>
+						<td>
+							<i class="fa fa-trash" style="cursor:pointer;" data-ng-click="RemovePlayer(p)"></i>
 						</td>
 					</tr>
+<!--
 					<tr>
 						<td>
 						<input type="text" name="Player2" data-ng-model="Player2" />
@@ -109,6 +114,7 @@
 						<input type="text" name="Player1Initiative" data-ng-model="Player10Initiative" class="TextBox50"/>
 						</td>
 					</tr>
+-->
 				</table>
 			</div>
 			<div class="Outline Playerbox">
