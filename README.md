@@ -21,6 +21,7 @@ This file contains a list of the players in your campaign and a list of relevant
 * Perception Bonus
 * Investigation Bonus
 * Stealth Bonus
+* Armor Class
 
 Players in this file will also be automatically listed on the Index page so that a DM doesn't have to enter their name every session.
 
