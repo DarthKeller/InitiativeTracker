@@ -28,9 +28,7 @@ itApp.controller("PlayerController", function PlayerController($scope, $http) {
 			{field: 'investigateRoll', displayName: 'Investigate Roll', cellClass: 'Grid-Cell-Center-Bold'}
 		]
 	};
-	
-// this is a change
-	
+
 	$scope.RollAll= function(){
 		$scope.players.forEach(function(player){
 			$scope.Roll(player);
