@@ -76,6 +76,7 @@
 	.Grid-Cell-Center-Bold{
 		text-align: center;
 		font-weight: bold;
+		color: red;				
 	}
 	
 	.InitiativeBox{

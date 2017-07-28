@@ -81,7 +81,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 		enableRowSelection : true,
 		enableSorting : false,
 		rowHeight : 23,
-		showFooter: true,		
+		showFooter: false,		
 		columnDefs : [
 		{
 			field : 'IsTurn',
