@@ -102,7 +102,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 		}, {
 			field : 'armor_class',
 			displayName : 'AC',
-			enableCellEdit : false,
+			enableCellEdit : true,
 			width : '*'
 		}, {
 			field : 'hit_points',
