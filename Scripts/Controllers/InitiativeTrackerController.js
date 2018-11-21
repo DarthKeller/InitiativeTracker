@@ -22,38 +22,6 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 	$scope.EncounterXP = 0;
 	$scope.XPPerPlayer = 0;
 
-/*
-	$scope.Player1 = '';
-	$scope.Player1Initiative = '';
-
-	$scope.Player2 = '';
-	$scope.Player2Initiative = '';
-
-	$scope.Player3 = '';
-	$scope.Player3Initiative = '';
-
-	$scope.Player4 = '';
-	$scope.Player4Initiative = '';
-
-	$scope.Player5 = '';
-	$scope.Player5Initiative = '';
-
-	$scope.Player6 = '';
-	$scope.Player6Initiative = '';
-
-	$scope.Player7 = '';
-	$scope.Player7Initiative = '';
-
-	$scope.Player8 = '';
-	$scope.Player8Initiative = '';
-
-	$scope.Player9 = '';
-	$scope.Player9Initiative = '';
-
-	$scope.Player10 = '';
-	$scope.Player10Initiative = '';
-*/
-
 	//Grids
 	$scope.MonstersGrid = {
 		data : 'Monsters',
@@ -231,6 +199,10 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 		$scope.MonsterAC = '';
 		$scope.MonsterMaxHP = '';
 		$scope.selectedMonster = $scope.monsterData[0];
+	};
+
+	$scope.AddAndRollMonsters = function(){
+		alert('hello');
 	};
 
 	$scope.BuildSkills = function(monster) {
@@ -455,15 +427,9 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 */
 	};
 
-	$scope.Roll = function() {
-		var activePlayers = 0;
-		$scope.initiative = [];
-		$scope.EncounterXP = 0;
-		$scope.XPPerPlayer = 0;
-		var count = $scope.Monsters.length;
-		for (var i = 0; i < count; i++) {
+	function RollDice(entity){
 			var final = 0;
-			var monster = $scope.Monsters[i];
+			//var monster = $scope.Monsters[i];
 			var random = Math.random();
 			var multi = random * 21;
 			var result = Math.floor(multi);
@@ -473,10 +439,33 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 				result = 1;
 			}
 
-			final = Number(result) + Number(monster.Bonus);	
+			final = Number(result) + Number(entity.Bonus);
+			
+			return final;
+	}
+
+	$scope.Roll = function() {
+		var activePlayers = 0;
+		$scope.initiative = [];
+		$scope.EncounterXP = 0;
+		$scope.XPPerPlayer = 0;
+		var count = $scope.Monsters.length;
+		for (var i = 0; i < count; i++) {
+			//var final = 0;
+			var monster = $scope.Monsters[i];
+			//var random = Math.random();
+			//var multi = random * 21;
+			//var result = Math.floor(multi);
+
+			//if(result == 0)
+			//{
+				//result = 1;
+			//}
+
+			//final = Number(result) + Number(monster.Bonus);	
 
 			var x = angular.copy(monster);
-			x.Initiative = final;
+			x.Initiative = RollDice(monster);
 			//x.CurrentHP = monster.CurrentHP;
 			x.IsTurn = false;
 			
@@ -500,98 +489,7 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 			$scope.initiative.push(obj);
 		});
 
-/*
-		if ($scope.Player1) {
-			var player1 = {};
-			player1.Name = $scope.Player1;
-			//player1.name = $scope.Player1;
-			player1.Initiative = Number($scope.Player1Initiative);
-			player1.IsTurn = false;
-			$scope.initiative.push(player1);
-			activePlayers++;
-		}
 
-		if ($scope.Player2) {
-			var player2 = {};
-			player2.Name = $scope.Player2;
-			player2.Initiative = Number($scope.Player2Initiative);
-			player2.IsTurn = false;
-			$scope.initiative.push(player2);
-			activePlayers++;
-		}
-
-		if ($scope.Player3) {
-			var player3 = {};
-			player3.Name = $scope.Player3;
-			player3.Initiative = Number($scope.Player3Initiative);
-			player3.IsTurn = false;
-			$scope.initiative.push(player3);
-			activePlayers++;
-		}
-
-		if ($scope.Player4) {
-			var player4 = {};
-			player4.Name = $scope.Player4;
-			player4.Initiative = Number($scope.Player4Initiative);
-			player4.IsTurn = false;
-			$scope.initiative.push(player4);
-			activePlayers++;
-		}
-
-		if ($scope.Player5) {
-			var player5 = {};
-			player5.Name = $scope.Player5;
-			player5.Initiative = Number($scope.Player5Initiative);
-			player5.IsTurn = false;
-			$scope.initiative.push(player5);
-			activePlayers++;
-		}
-
-		if ($scope.Player6) {
-			var player6 = {};
-			player6.Name = $scope.Player6;
-			player6.Initiative = Number($scope.Player6Initiative);
-			player6.IsTurn = false;
-			$scope.initiative.push(player6);
-			activePlayers++;
-		}
-
-		if ($scope.Player7) {
-			var player7 = {};
-			player7.Name = $scope.Player7;
-			player7.Initiative = Number($scope.Player7Initiative);
-			player7.IsTurn = false;
-			$scope.initiative.push(player7);
-			activePlayers++;
-		}
-
-		if ($scope.Player8) {
-			var player8 = {};
-			player8.Name = $scope.Player8;
-			player8.Initiative = Number($scope.Player8Initiative);
-			player8.IsTurn = false;
-			$scope.initiative.push(player8);
-			activePlayers++;
-		}
-
-		if ($scope.Player9) {
-			var player9 = {};
-			player9.Name = $scope.Player9;
-			player9.Initiative = Number($scope.Player9Initiative);
-			player9.IsTurn = false;
-			$scope.initiative.push(player9);
-			activePlayers++;
-		}
-
-		if ($scope.Player10) {
-			var player10 = {};
-			player10.Name = $scope.Player10;
-			player10.Initiative = Number($scope.Player10Initiative);
-			player10.IsTurn = false;
-			$scope.initiative.push(player10);
-			activePlayers++;
-		}
-*/
 		if($scope.EncounterXP != "Custom"){
 			$scope.XPPerPlayer = Number($scope.EncounterXP) / Number($scope.players.length);
 		}
@@ -599,7 +497,11 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 			$scope.XPPerPlayer = "Custom";
 		}
 		
+		SortInitiative();
 
+	};
+
+	function SortInitiative(){
 		var sortedInitiative = Enumerable.From($scope.initiative).OrderByDescending(function(i) {
 			return i.Initiative;
 		}).Select(function(s) {
@@ -615,9 +517,9 @@ itApp.controller("InitiativeController", function InitiativeController($scope, $
 		$scope.ActiveMonster = first;
 
 		$scope.initiative = sortedInitiative;
-	};
+	}
 
-$scope.RemovePlayer=function(player){
+	$scope.RemovePlayer=function(player){
 	var index = $scope.players.indexOf(player);
 	$scope.players.splice(index, 1);
 };

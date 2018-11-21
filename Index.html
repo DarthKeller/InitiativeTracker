@@ -36,85 +36,7 @@
 							<i class="fa fa-trash" style="cursor:pointer;" data-ng-click="RemovePlayer(p)"></i>
 						</td>
 					</tr>
-<!--
-					<tr>
-						<td>
-						<input type="text" name="Player2" data-ng-model="Player2" />
-						</td>
-						<td>
-						<input type="text" name="Player2Initiative" data-ng-model="Player2Initiative" class="TextBox50"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-						<input type="text" name="Player1" data-ng-model="Player3" />
-						</td>
-						<td>
-						<input type="text" name="Player1Initiative" data-ng-model="Player3Initiative" class="TextBox50"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-						<input type="text" name="Player1" data-ng-model="Player4" />
-						</td>
-						<td>
-						<input type="text" name="Player1Initiative" data-ng-model="Player4Initiative" class="TextBox50"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-						<input type="text" name="Player1" data-ng-model="Player5" />
-						</td>
-						<td>
-						<input type="text" name="Player1Initiative" data-ng-model="Player5Initiative" class="TextBox50"/>
-						</td>
-					</tr>
 
-					<tr>
-						<td>
-						<input type="text" name="Player1" data-ng-model="Player6" />
-						</td>
-						<td>
-						<input type="text" name="Player1Initiative" data-ng-model="Player6Initiative" class="TextBox50"/>
-						</td>
-					</tr>
-
-					<tr>
-						<td>
-						<input type="text" name="Player1" data-ng-model="Player7" />
-						</td>
-						<td>
-						<input type="text" name="Player1Initiative" data-ng-model="Player7Initiative" class="TextBox50"/>
-						</td>
-					</tr>
-
-					<tr>
-						<td>
-						<input type="text" name="Player1" data-ng-model="Player8" />
-						</td>
-						<td>
-						<input type="text" name="Player1Initiative" data-ng-model="Player8Initiative" class="TextBox50"/>
-						</td>
-					</tr>
-
-					<tr>
-						<td>
-						<input type="text" name="Player1" data-ng-model="Player9" />
-						</td>
-						<td>
-						<input type="text" name="Player1Initiative" data-ng-model="Player9Initiative" class="TextBox50"/>
-						</td>
-					</tr>
-
-					<tr>
-						<td>
-						<input type="text" name="Player1" data-ng-model="Player10" />
-						</td>
-						<td>
-						<input type="text" name="Player1Initiative" data-ng-model="Player10Initiative" class="TextBox50"/>
-						</td>
-					</tr>
--->
 				</table>
 			</div>
 			<div class="Outline Playerbox">
@@ -148,10 +70,12 @@
 				<div>
 					<input type="button" data-ng-click="AddMonsters()" value="Add" />
 					<input type="button" data-ng-click="ClearMonsters()" value="Clear" />
+					<input type="button" data-ng-click="AddAndRollMonsters()" data-ng-disabled="initiative.length <= 0" value="Add & Roll"/>
 				</div>
 
 				<div data-ng-grid="MonstersGrid" style="width: 595px; height: 200px;"></div>
 			</div>
+			
 			<div class="Outline InitiativeBox" >
 				<label>Initiative</label>
 				<div>
