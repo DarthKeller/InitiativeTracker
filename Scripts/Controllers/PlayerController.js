@@ -16,6 +16,7 @@ itApp.controller("PlayerController", function PlayerController($scope, $http) {
 		data: 'players',
 		columnDefs: [
 			{field: 'name', displayName: 'Name'},
+			{field: 'ac', displayName: 'AC'},			
 			{field: 'passivePerception', displayName: 'P Perception', cellClass: 'Grid-Cell-Center'},
 			{field: 'passiveStealth', displayName: 'P Stealth', cellClass: 'Grid-Cell-Center'},
 			{field: 'passiveInvestigation', displayName: 'P Investigation', cellClass: 'Grid-Cell-Center'},
@@ -27,9 +28,7 @@ itApp.controller("PlayerController", function PlayerController($scope, $http) {
 			{field: 'investigateRoll', displayName: 'Investigate Roll', cellClass: 'Grid-Cell-Center-Bold'}
 		]
 	};
-	
 
-	
 	$scope.RollAll= function(){
 		$scope.players.forEach(function(player){
 			$scope.Roll(player);

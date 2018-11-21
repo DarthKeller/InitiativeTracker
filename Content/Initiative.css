@@ -76,10 +76,11 @@
 	.Grid-Cell-Center-Bold{
 		text-align: center;
 		font-weight: bold;
+		color: red;				
 	}
 	
 	.InitiativeBox{
-		height: 905px;
+		height: 900px;
 	}
 
 	.Span-Odd{
@@ -88,4 +89,10 @@
 	
 	.Span-Even{
 		background-color: white;
+	}
+	
+	.IsTurn{
+		background-color: purple;
+		color: white;
+		font-weight: bold;
 	}

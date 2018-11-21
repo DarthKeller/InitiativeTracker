@@ -23,92 +23,20 @@
 					<tr>
 						<td>Player</td>
 						<td>Initiative</td>
+						<td></td>
 					</tr>
-					<tr>
+					<tr data-ng-repeat="p in players">
 						<td>
-						<input type="text" name="Player1" data-ng-model="Player1"/>
+							<input type="text" data-ng-model="p.name"/>
 						</td>
 						<td>
-						<input type="text" name="Player1Initiative" data-ng-model="Player1Initiative" class="TextBox50"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-						<input type="text" name="Player2" data-ng-model="Player2" />
+							<input type="text" data-ng-model="p.initiative" class="TextBox50"/>
 						</td>
 						<td>
-						<input type="text" name="Player2Initiative" data-ng-model="Player2Initiative" class="TextBox50"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-						<input type="text" name="Player1" data-ng-model="Player3" />
-						</td>
-						<td>
-						<input type="text" name="Player1Initiative" data-ng-model="Player3Initiative" class="TextBox50"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-						<input type="text" name="Player1" data-ng-model="Player4" />
-						</td>
-						<td>
-						<input type="text" name="Player1Initiative" data-ng-model="Player4Initiative" class="TextBox50"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-						<input type="text" name="Player1" data-ng-model="Player5" />
-						</td>
-						<td>
-						<input type="text" name="Player1Initiative" data-ng-model="Player5Initiative" class="TextBox50"/>
+							<i class="fa fa-trash" style="cursor:pointer;" data-ng-click="RemovePlayer(p)"></i>
 						</td>
 					</tr>
 
-					<tr>
-						<td>
-						<input type="text" name="Player1" data-ng-model="Player6" />
-						</td>
-						<td>
-						<input type="text" name="Player1Initiative" data-ng-model="Player6Initiative" class="TextBox50"/>
-						</td>
-					</tr>
-
-					<tr>
-						<td>
-						<input type="text" name="Player1" data-ng-model="Player7" />
-						</td>
-						<td>
-						<input type="text" name="Player1Initiative" data-ng-model="Player7Initiative" class="TextBox50"/>
-						</td>
-					</tr>
-
-					<tr>
-						<td>
-						<input type="text" name="Player1" data-ng-model="Player8" />
-						</td>
-						<td>
-						<input type="text" name="Player1Initiative" data-ng-model="Player8Initiative" class="TextBox50"/>
-						</td>
-					</tr>
-
-					<tr>
-						<td>
-						<input type="text" name="Player1" data-ng-model="Player9" />
-						</td>
-						<td>
-						<input type="text" name="Player1Initiative" data-ng-model="Player9Initiative" class="TextBox50"/>
-						</td>
-					</tr>
-
-					<tr>
-						<td>
-						<input type="text" name="Player1" data-ng-model="Player10" />
-						</td>
-						<td>
-						<input type="text" name="Player1Initiative" data-ng-model="Player10Initiative" class="TextBox50"/>
-						</td>
-					</tr>
 				</table>
 			</div>
 			<div class="Outline Playerbox">
@@ -142,21 +70,25 @@
 				<div>
 					<input type="button" data-ng-click="AddMonsters()" value="Add" />
 					<input type="button" data-ng-click="ClearMonsters()" value="Clear" />
+					<input type="button" data-ng-click="AddAndRollMonsters()" data-ng-disabled="initiative.length <= 0" value="Add & Roll"/>
 				</div>
 
 				<div data-ng-grid="MonstersGrid" style="width: 595px; height: 200px;"></div>
 			</div>
+			
 			<div class="Outline InitiativeBox" >
 				<label>Initiative</label>
 				<div>
 					<input type="button" data-ng-click="Roll()" value="Roll Initiative"/>
 					<input type="button" data-ng-click="ClearInitiative()" value="Clear Initiative"/>
 				</div>
-				<div>
-					<input type="button" data-ng-click="ProgressInitiative()" value="Next"/>
+				<div>					
 					<span class="Span-Odd">Round Counter: {{roundCount}}</span>
-					<span class="Span-Even">Encounter XP: {{EncounterXP | number}}</span>
-					<span class="Span-Odd">XP Per Player: {{XPPerPlayer | number}}</span>
+					<span class="Span-Even" data-ng-show="EncounterXP != 'Custom'">Encounter XP: {{EncounterXP | number}}</span>
+					<span class="Span-Even" data-ng-show="EncounterXP == 'Custom'">Encounter XP: {{EncounterXP}}</span>
+					<span class="Span-Odd" data-ng-show="EncounterXP != 'Custom'">XP Per Player: {{XPPerPlayer | number}}</span>
+					<span class="Span-Odd" data-ng-show="EncounterXP == 'Custom'">XP Per Player: {{XPPerPlayer}}</span>
+					<input type="button" data-ng-click="ProgressInitiative()" value="Next"/>
 				</div>
 				<div data-ng-grid="InitiativeGrid" style="width: 920px; min-height: 750px;"></div>
 
@@ -277,5 +209,6 @@
 		<script src="Scripts/jquery.linq/jquery.linq.js"></script>
 		<script src="Scripts/Controllers/InitiativeTrackerController.js"></script>
 		<script src="Scripts/Filters/filters.js"></script>
+		<script src="Scripts/Directives/Directives.js"></script>		
 	</body>
 </html>

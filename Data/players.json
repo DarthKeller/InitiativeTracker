@@ -1,6 +1,7 @@
 [
 	{
-		"name": "TJ",
+		"name": "Juriel",
+		"ac": 20,
 		"passivePerception": -1,
 		"passiveStealth": 1,
 		"passiveInvestigation": 1,
@@ -8,7 +9,8 @@
 		"stealthBonus": 1,
 		"investigateBonus": 1
 	}, {
-		"name": "Jay",
+		"name": "Marlen",
+		"ac": 15,
 		"passivePerception": 1,
 		"passiveStealth": 1,
 		"passiveInvestigation": 1,
@@ -16,7 +18,8 @@
 		"stealthBonus": 1,
 		"investigateBonus": 1
 	}, {
-		"name": "Hector",
+		"name": "Baern",
+		"ac": 14,
 		"passivePerception": 1,
 		"passiveStealth": 1,
 		"passiveInvestigation": 1,
@@ -24,7 +27,8 @@
 		"stealthBonus": 1,
 		"investigateBonus": 1
 	}, {
-		"name": "Kelly",
+		"name": "Aria",
+		"ac": 18,
 		"passivePerception": 1,
 		"passiveStealth": 1,
 		"passiveInvestigation": 1,
@@ -32,7 +36,8 @@
 		"stealthBonus": 1,
 		"investigateBonus": 1
 	}, {
-		"name": "Jess",
+		"name": "Korrin",
+		"ac": 16,
 		"passivePerception": 1,
 		"passiveStealth": 1,
 		"passiveInvestigation": 1,
